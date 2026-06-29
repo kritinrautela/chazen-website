@@ -892,7 +892,7 @@ a {
 .home-hero-image {
   object-fit: cover;
   object-position: center;
-  filter: saturate(0.92) contrast(1.04);
+  filter: saturate(0.9) contrast(1.08) brightness(0.92);
 }
 
 .home-hero-vignette {
@@ -900,8 +900,8 @@ a {
   inset: 0;
   z-index: 1;
   background:
-    radial-gradient(circle at 78% 58%, rgba(16, 18, 15, 0.04), rgba(16, 18, 15, 0.48) 34%, rgba(16, 18, 15, 0.82) 70%),
-    linear-gradient(90deg, rgba(16, 18, 15, 0.96), rgba(16, 18, 15, 0.68) 38%, rgba(16, 18, 15, 0.16)),
+    radial-gradient(circle at 74% 56%, rgba(16, 18, 15, 0.02), rgba(16, 18, 15, 0.38) 35%, rgba(16, 18, 15, 0.76) 73%),
+    linear-gradient(90deg, rgba(16, 18, 15, 0.96), rgba(16, 18, 15, 0.7) 36%, rgba(16, 18, 15, 0.08)),
     linear-gradient(180deg, rgba(16, 18, 15, 0.2), rgba(16, 18, 15, 0.86));
 }
 
@@ -1134,23 +1134,22 @@ a {
   overflow: hidden;
   border: 1px solid rgba(251, 250, 246, 0.13);
   border-radius: 8px;
-  background:
-    radial-gradient(circle at 44% 42%, rgba(251, 250, 246, 0.08), transparent 17%),
-    linear-gradient(135deg, rgba(101, 65, 42, 0.72), rgba(31, 23, 18, 0.92)),
-    #19140f;
-  box-shadow: inset 0 0 90px rgba(0, 0, 0, 0.34), 0 28px 80px rgba(0, 0, 0, 0.18);
+  background-color: #19140f;
+  background-position: center;
+  background-size: cover;
+  box-shadow: inset 0 0 90px rgba(0, 0, 0, 0.28), 0 28px 80px rgba(0, 0, 0, 0.2);
 }
 
 .tea-table-stage::before {
   content: "";
   position: absolute;
-  inset: 9%;
-  border: 1px solid rgba(251, 250, 246, 0.11);
+  inset: 0;
+  border: 1px solid rgba(251, 250, 246, 0.06);
   border-radius: 6px;
   background:
-    linear-gradient(90deg, rgba(251, 250, 246, 0.045) 1px, transparent 1px),
-    linear-gradient(rgba(251, 250, 246, 0.04) 1px, transparent 1px);
-  background-size: 52px 52px;
+    radial-gradient(circle at center, transparent 45%, rgba(16, 18, 15, 0.18)),
+    linear-gradient(180deg, rgba(16, 18, 15, 0.08), rgba(16, 18, 15, 0.46));
+  pointer-events: none;
 }
 
 .tea-table-grain {
@@ -1169,13 +1168,18 @@ a {
 .tea-piece {
   position: absolute;
   z-index: 2;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(251, 250, 246, 0.22);
-  background: rgba(251, 250, 246, 0.055);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(251, 250, 246, 0.44);
+  border-radius: 999px;
+  background: rgba(16, 18, 15, 0.58);
   color: #fbfaf6;
   cursor: pointer;
+  width: 34px;
+  height: 34px;
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+  backdrop-filter: blur(12px);
 }
 
 .tea-piece span {
@@ -1184,107 +1188,151 @@ a {
   letter-spacing: 0.08em;
 }
 
+.tea-piece em {
+  position: absolute;
+  left: calc(100% + 0.68rem);
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  color: rgba(251, 250, 246, 0.82);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  font-style: normal;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.72);
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.tea-piece::before {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  width: 36px;
+  height: 1px;
+  background: rgba(181, 155, 101, 0.5);
+  opacity: 0;
+  transform: translateY(-50%);
+  transition: opacity 180ms ease;
+}
+
+.tea-piece::after {
+  content: attr(data-label);
+  position: absolute;
+  left: calc(100% + 0.7rem);
+  top: calc(50% + 1.18rem);
+  transform: translateY(-50%);
+  white-space: nowrap;
+  color: rgba(251, 250, 246, 0.58);
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
 .tea-piece:hover,
 .tea-piece.is-active {
   transform: translateY(-3px);
   border-color: rgba(181, 155, 101, 0.92);
-  background: rgba(251, 250, 246, 0.12);
-  box-shadow: 0 0 0 8px rgba(181, 155, 101, 0.08);
+  background: rgba(159, 63, 47, 0.82);
+  box-shadow: 0 0 0 8px rgba(181, 155, 101, 0.11), 0 12px 26px rgba(0, 0, 0, 0.22);
 }
 
 .piece-01 {
-  left: 42%;
-  top: 33%;
-  width: 116px;
-  height: 116px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle, #fbfaf6 0 23%, #9f3f2f 24% 28%, #ded3c2 29% 100%);
-  color: #203a2b;
+  left: 39%;
+  top: 41%;
 }
 
 .piece-02 {
-  left: 62%;
-  top: 29%;
-  width: 148px;
-  height: 92px;
-  border-radius: 48% 52% 44% 56%;
+  left: 61%;
+  top: 43%;
 }
 
 .piece-03 {
-  left: 64%;
-  top: 54%;
-  width: 74px;
-  height: 74px;
-  border-radius: 50%;
+  left: 51%;
+  top: 73%;
 }
 
 .piece-04 {
-  left: 11%;
-  top: 16%;
-  width: 235px;
-  height: 345px;
-  border-radius: 8px;
+  left: 34%;
+  top: 31%;
 }
 
 .piece-05 {
-  left: 30%;
-  top: 68%;
-  width: 172px;
-  height: 76px;
-  border-radius: 50%;
+  left: 10%;
+  top: 42%;
 }
 
 .piece-06 {
-  left: 24%;
-  top: 56%;
-  width: 190px;
-  height: 42px;
-  border-radius: 999px;
-  transform: rotate(-16deg);
+  left: 19%;
+  top: 72%;
 }
 
 .piece-07 {
-  left: 17%;
-  top: 78%;
-  width: 210px;
-  height: 32px;
-  border-radius: 999px;
-  transform: rotate(12deg);
+  left: 21%;
+  top: 81%;
 }
 
 .piece-08 {
-  left: 19%;
-  top: 48%;
-  width: 170px;
-  height: 20px;
-  border-radius: 999px;
-  transform: rotate(47deg);
+  left: 17%;
+  top: 78%;
 }
 
 .piece-09 {
-  left: 52%;
-  top: 72%;
-  width: 132px;
-  height: 86px;
-  border-radius: 4px;
+  left: 7%;
+  top: 82%;
 }
 
 .piece-10 {
-  left: 74%;
-  top: 62%;
-  width: 116px;
-  height: 116px;
-  border-radius: 50%;
+  left: 87%;
+  top: 12%;
 }
 
 .piece-11 {
-  left: 72%;
-  top: 17%;
-  width: 142px;
-  height: 82px;
-  border-radius: 50%;
+  left: 84%;
+  top: 79%;
   border-color: rgba(181, 155, 101, 0.7);
+}
+
+.tea-piece:hover em,
+.tea-piece:hover::before,
+.tea-piece:hover::after,
+.tea-piece.is-active em,
+.tea-piece.is-active::before,
+.tea-piece.is-active::after {
+  opacity: 1;
+}
+
+.piece-02 em,
+.piece-02::after,
+.piece-10 em,
+.piece-10::after,
+.piece-11 em,
+.piece-11::after {
+  left: auto;
+  right: calc(100% + 0.7rem);
+  text-align: right;
+}
+
+.piece-02::before,
+.piece-10::before,
+.piece-11::before {
+  left: auto;
+  right: 100%;
+}
+
+.table-museum-note {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  color: rgba(251, 250, 246, 0.58);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .tool-detail {
@@ -1330,6 +1378,12 @@ a {
   line-height: 1.72;
 }
 
+.tool-detail dl div:last-child {
+  margin-top: 0.4rem;
+  border-top: 1px solid rgba(251, 250, 246, 0.12);
+  padding-top: 1.3rem;
+}
+
 .home-ritual {
   background: #f1e8da;
 }
@@ -1347,7 +1401,8 @@ a {
   border: 1px solid rgba(23, 23, 19, 0.1);
   border-radius: 8px;
   background:
-    radial-gradient(circle at 52% 44%, rgba(251, 250, 246, 0.78), transparent 28%),
+    radial-gradient(circle at 45% 42%, rgba(251, 250, 246, 0.64), transparent 24%),
+    radial-gradient(circle at 70% 72%, rgba(181, 155, 101, 0.28), transparent 20%),
     linear-gradient(135deg, #201813, #6f4a32);
   overflow: hidden;
   box-shadow: 0 30px 90px rgba(23, 23, 19, 0.12);
@@ -1356,6 +1411,7 @@ a {
 .ritual-object {
   position: absolute;
   inset: 0;
+  transition: opacity 220ms ease;
 }
 
 .ritual-gaiwan {
@@ -1370,7 +1426,7 @@ a {
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.26);
 }
 
-.ritual-pour {
+.ritual-waterline {
   position: absolute;
   left: 50%;
   top: 38%;
@@ -1379,6 +1435,8 @@ a {
   background: rgba(251, 250, 246, 0.72);
   transform: rotate(18deg);
   transform-origin: left;
+  opacity: 0;
+  transition: opacity 220ms ease, transform 220ms ease;
 }
 
 .ritual-steam {
@@ -1390,6 +1448,53 @@ a {
   border-left: 1px solid rgba(251, 250, 246, 0.5);
   border-radius: 50%;
   animation: steam-rise 4.8s ease-in-out infinite;
+}
+
+.ritual-leaves {
+  position: absolute;
+  left: 52%;
+  top: 54%;
+  width: 170px;
+  height: 42px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 18% 55%, rgba(32, 58, 43, 0.96) 0 4px, transparent 5px),
+    radial-gradient(circle at 36% 40%, rgba(32, 58, 43, 0.88) 0 5px, transparent 6px),
+    radial-gradient(circle at 52% 62%, rgba(32, 58, 43, 0.86) 0 4px, transparent 5px),
+    radial-gradient(circle at 70% 38%, rgba(32, 58, 43, 0.88) 0 5px, transparent 6px);
+  opacity: 0;
+  transform: rotate(-10deg);
+  transition: opacity 220ms ease;
+}
+
+.ritual-cup {
+  position: absolute;
+  left: 67%;
+  top: 59%;
+  width: 92px;
+  height: 92px;
+  border: 14px solid rgba(251, 250, 246, 0.86);
+  border-radius: 50%;
+  background: rgba(111, 74, 50, 0.72);
+  opacity: 0;
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.ritual-leaf .ritual-leaves,
+.ritual-awake .ritual-steam,
+.ritual-water .ritual-waterline,
+.ritual-pour .ritual-waterline,
+.ritual-taste .ritual-cup {
+  opacity: 1;
+}
+
+.ritual-water .ritual-waterline,
+.ritual-pour .ritual-waterline {
+  transform: rotate(18deg) scaleX(1.15);
+}
+
+.ritual-taste .ritual-cup {
+  transform: translateY(-10px);
 }
 
 .ritual-step-panel {
@@ -1481,22 +1586,85 @@ a {
   margin-top: 4rem;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  border-top: 1px solid rgba(23, 23, 19, 0.12);
+  gap: 1rem;
 }
 
 .chapter-preview {
+  position: relative;
   min-height: 390px;
-  border-right: 1px solid rgba(23, 23, 19, 0.1);
+  overflow: hidden;
+  border: 1px solid rgba(23, 23, 19, 0.1);
+  border-radius: 8px;
   padding: 1.3rem 1rem;
+  background: #171713;
+  color: #fbfaf6;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.chapter-preview:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 70px rgba(23, 23, 19, 0.14);
+}
+
+.chapter-texture {
+  position: absolute;
+  inset: 0;
+  opacity: 0.82;
+  transition: transform 240ms ease, opacity 180ms ease;
+}
+
+.chapter-preview:hover .chapter-texture {
+  transform: scale(1.04);
+  opacity: 0.94;
+}
+
+.chapter-song .chapter-texture {
+  background:
+    radial-gradient(circle at 55% 36%, rgba(251, 250, 246, 0.16), transparent 12%),
+    radial-gradient(circle at 50% 34%, rgba(16, 18, 15, 0.9), transparent 28%),
+    linear-gradient(145deg, #0d0e0c, #4a382b);
+}
+
+.chapter-atlas .chapter-texture {
+  background:
+    linear-gradient(125deg, transparent 0 36%, rgba(181, 155, 101, 0.22) 37%, transparent 38% 100%),
+    repeating-linear-gradient(14deg, rgba(251, 250, 246, 0.08) 0 1px, transparent 1px 18px),
+    linear-gradient(145deg, #203a2b, #10120f);
+}
+
+.chapter-stillness .chapter-texture {
+  background:
+    radial-gradient(circle at center, rgba(181, 155, 101, 0.28), transparent 22%),
+    radial-gradient(circle at 52% 44%, rgba(251, 250, 246, 0.12), transparent 10%),
+    #10120f;
+}
+
+.chapter-wisdom .chapter-texture {
+  background:
+    radial-gradient(circle at 70% 24%, rgba(159, 63, 47, 0.34), transparent 16%),
+    linear-gradient(90deg, rgba(251, 250, 246, 0.08) 1px, transparent 1px),
+    linear-gradient(145deg, #2b2118, #10120f);
+  background-size: auto, 48px 48px, auto;
+}
+
+.chapter-gifts .chapter-texture {
+  background:
+    linear-gradient(135deg, rgba(181, 155, 101, 0.18), transparent 32%),
+    repeating-linear-gradient(90deg, rgba(251, 250, 246, 0.07) 0 1px, transparent 1px 22px),
+    linear-gradient(145deg, #3f5945, #15150f);
 }
 
 .chapter-preview span {
+  position: relative;
+  z-index: 1;
   color: #9f3f2f;
   font-size: 0.72rem;
   font-weight: 900;
 }
 
 .chapter-preview h3 {
+  position: relative;
+  z-index: 1;
   margin-top: 4rem;
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(1.9rem, 2.6vw, 3rem);
@@ -1505,17 +1673,21 @@ a {
 }
 
 .chapter-preview strong {
+  position: relative;
+  z-index: 1;
   display: block;
   margin-top: 1rem;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.6rem;
   font-weight: 400;
-  color: rgba(23, 23, 19, 0.58);
+  color: rgba(251, 250, 246, 0.72);
 }
 
 .chapter-preview p {
+  position: relative;
+  z-index: 1;
   margin-top: 2rem;
-  color: rgba(23, 23, 19, 0.62);
+  color: rgba(251, 250, 246, 0.68);
   font-size: 0.92rem;
   line-height: 1.75;
 }
@@ -1637,32 +1809,52 @@ a {
     grid-template-columns: 2rem 1fr auto;
   }
 
+  .tool-list {
+    display: flex;
+    gap: 0.7rem;
+    overflow-x: auto;
+    border-top: 0;
+    padding-bottom: 0.4rem;
+    scroll-snap-type: x mandatory;
+  }
+
+  .tool-list button {
+    min-width: 235px;
+    border: 1px solid rgba(251, 250, 246, 0.12);
+    border-radius: 8px;
+    padding: 0.9rem;
+    scroll-snap-align: start;
+  }
+
   .tea-table-stage {
     min-height: 420px;
+    background-size: cover;
+  }
+
+  .tea-piece {
+    width: 28px;
+    height: 28px;
+  }
+
+  .tea-piece em,
+  .tea-piece::before,
+  .tea-piece::after {
+    display: none;
   }
 
   .piece-01 {
-    left: 37%;
-    width: 88px;
-    height: 88px;
+    left: 38%;
+    top: 41%;
   }
 
   .piece-02 {
     left: 60%;
-    width: 104px;
-    height: 68px;
-  }
-
-  .piece-04 {
-    left: 7%;
-    width: 150px;
-    height: 235px;
+    top: 43%;
   }
 
   .piece-11 {
-    left: 67%;
-    width: 96px;
-    height: 60px;
+    left: 82%;
+    top: 78%;
   }
 
   .ritual-exhibit {

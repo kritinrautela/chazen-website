@@ -10,7 +10,8 @@ const teaTools = [
     chinese: "蓋碗",
     purpose: "A lidded bowl used to brew leaves with precision and openness.",
     meaning: "Heaven, human, and earth held as lid, bowl, and saucer.",
-    used: "Used for warming, awakening, brewing, and pouring."
+    used: "Used for warming, awakening, brewing, and pouring.",
+    note: "A Qing-era everyday form with older ritual logic: the lid controls aroma, the bowl reveals colour, the saucer keeps heat respectful."
   },
   {
     number: "02",
@@ -18,7 +19,8 @@ const teaTools = [
     chinese: "公道杯",
     purpose: "Receives brewed tea before serving so every cup has equal strength.",
     meaning: "A small ethics of hospitality: no guest receives a lesser cup.",
-    used: "Used immediately after each infusion leaves the gaiwan."
+    used: "Used immediately after each infusion leaves the gaiwan.",
+    note: "Its name literally carries fairness. In gongfu service, equality is designed into the pour."
   },
   {
     number: "03",
@@ -26,7 +28,8 @@ const teaTools = [
     chinese: "品茗杯",
     purpose: "A small cup that concentrates aroma, temperature, and texture.",
     meaning: "The cup asks the drinker to slow the mouth and attention.",
-    used: "Used after pouring from the fairness cup."
+    used: "Used after pouring from the fairness cup.",
+    note: "Small volume is not scarcity. It keeps the tea warm, repeated, and alive across many infusions."
   },
   {
     number: "04",
@@ -34,7 +37,8 @@ const teaTools = [
     chinese: "茶盤",
     purpose: "A drained surface for water, vessels, and controlled movement.",
     meaning: "The stage of the ritual, containing overflow without noise.",
-    used: "Used throughout the entire brewing sequence."
+    used: "Used throughout the entire brewing sequence.",
+    note: "The tray makes abundance quiet: water can move freely while the room remains composed."
   },
   {
     number: "05",
@@ -42,7 +46,8 @@ const teaTools = [
     chinese: "茶荷",
     purpose: "Displays dry leaves before brewing so form and fragrance can be read.",
     meaning: "A moment of respect before water changes the leaf.",
-    used: "Used before warming and brewing, during the leaf presentation."
+    used: "Used before warming and brewing, during the leaf presentation.",
+    note: "The leaf is presented as an origin object before it becomes liquor, aroma, and memory."
   },
   {
     number: "06",
@@ -50,7 +55,8 @@ const teaTools = [
     chinese: "茶則",
     purpose: "Transfers dry leaves cleanly from vessel to gaiwan.",
     meaning: "Measured generosity, never careless abundance.",
-    used: "Used when placing leaves into the warmed gaiwan."
+    used: "Used when placing leaves into the warmed gaiwan.",
+    note: "A scoop is a small discipline of proportion: enough leaf to speak, not enough to shout."
   },
   {
     number: "07",
@@ -58,7 +64,8 @@ const teaTools = [
     chinese: "茶夾",
     purpose: "Handles hot cups and keeps fingers away from the drinking rim.",
     meaning: "Care expressed through cleanliness and restraint.",
-    used: "Used during warming, rinsing, and arranging cups."
+    used: "Used during warming, rinsing, and arranging cups.",
+    note: "The tool protects both guest and vessel. Refinement is often the removal of unnecessary touch."
   },
   {
     number: "08",
@@ -66,7 +73,8 @@ const teaTools = [
     chinese: "茶針",
     purpose: "Clears spouts and guides compressed leaves with delicacy.",
     meaning: "Precision without force.",
-    used: "Used when a vessel or compressed tea needs gentle opening."
+    used: "Used when a vessel or compressed tea needs gentle opening.",
+    note: "The needle reminds the hand that force is rarely elegance. The leaf opens by invitation."
   },
   {
     number: "09",
@@ -74,7 +82,8 @@ const teaTools = [
     chinese: "茶巾",
     purpose: "Wipes water marks and keeps the table visually quiet.",
     meaning: "Cleanliness as visual calm.",
-    used: "Used between pours and whenever the table needs resetting."
+    used: "Used between pours and whenever the table needs resetting.",
+    note: "A cloth is the unseen rhythm of the table. It restores silence between gestures."
   },
   {
     number: "10",
@@ -82,7 +91,8 @@ const teaTools = [
     chinese: "水盂",
     purpose: "Receives rinse water, spent water, and the first discarded infusion.",
     meaning: "Release is part of refinement.",
-    used: "Used during warming, rinsing, and clearing."
+    used: "Used during warming, rinsing, and clearing.",
+    note: "The bowl gives the ritual a place for letting go: excess water, old heat, first bitterness."
   },
   {
     number: "11",
@@ -90,7 +100,8 @@ const teaTools = [
     chinese: "冥想鉢",
     purpose: "A sound object for entering stillness before tea.",
     meaning: "One tone marks the threshold between ordinary time and ritual time.",
-    used: "Used before the first pour or during Stillness Mode."
+    used: "Used before the first pour or during Stillness Mode.",
+    note: "Not a traditional gongfu necessity, but a CHAZEN threshold object: sound before water, breath before taste."
   }
 ];
 
@@ -99,37 +110,43 @@ const ritualSteps = [
     number: "01",
     title: "Warm the vessel",
     chinese: "溫杯",
-    copy: "Heat prepares porcelain and announces that the table has changed state."
+    copy: "Heat wakes porcelain before it wakes the leaf. The table becomes warm, alert, and ready to receive.",
+    visual: "warm"
   },
   {
     number: "02",
     title: "Present the leaves",
     chinese: "賞茶",
-    copy: "Before extraction, the leaf is seen: shape, fragrance, origin, season."
+    copy: "The dry leaf is offered to the eye first: twisted, rolled, pressed, or flat with the weather still inside.",
+    visual: "leaf"
   },
   {
     number: "03",
     title: "Awaken the tea",
     chinese: "醒茶",
-    copy: "A brief rinse opens compressed memory and releases the first breath."
+    copy: "A brief rinse releases dust, sleep, and storage. What remains is the first clean breath of the tea.",
+    visual: "awake"
   },
   {
     number: "04",
     title: "Brew",
     chinese: "注水",
-    copy: "Water falls with intention. Temperature, angle, and time become design."
+    copy: "Water falls in a controlled line. Temperature, angle, and seconds become architecture.",
+    visual: "water"
   },
   {
     number: "05",
     title: "Pour",
     chinese: "出湯",
-    copy: "The liquor leaves the gaiwan at the moment aroma and body meet."
+    copy: "The liquor leaves the gaiwan before it turns heavy. Timing is the elegance of restraint.",
+    visual: "pour"
   },
   {
     number: "06",
     title: "Taste",
     chinese: "品茗",
-    copy: "The first sip is not judged. It is received."
+    copy: "The first sip is received before it is judged: aroma, texture, warmth, return.",
+    visual: "taste"
   }
 ];
 
@@ -137,27 +154,32 @@ const chapterPreviews = [
   {
     title: "The Song Room",
     chinese: "宋室",
-    copy: "Dian cha, Jian ware, scholar restraint, and the quiet intelligence of black glaze."
+    copy: "Dian cha, Jian ware, scholar restraint, and the quiet intelligence of black glaze.",
+    texture: "song"
   },
   {
     title: "Tea Atlas",
     chinese: "茶之地圖",
-    copy: "Yunnan mist, Wuyi rock, Anxi orchid, West Lake spring, Taiwan alpine air, Uji shade."
+    copy: "Yunnan mist, Wuyi rock, Anxi orchid, West Lake spring, Taiwan alpine air, Uji shade.",
+    texture: "atlas"
   },
   {
     title: "Stillness Mode",
     chinese: "靜心茶室",
-    copy: "A darkened chamber for bowl sound, breath pacing, steam, and mood-based tea."
+    copy: "A darkened chamber for bowl sound, breath pacing, steam, and mood-based tea.",
+    texture: "stillness"
   },
   {
     title: "Wisdom Collection",
     chinese: "東方人物智慧",
-    copy: "Fu, Lu, Shou, Lu Yu, Su Shi, and brotherhood archetypes as subtle luxury symbols."
+    copy: "Fu, Lu, Shou, Lu Yu, Su Shi, and brotherhood archetypes as subtle luxury symbols.",
+    texture: "wisdom"
   },
   {
     title: "Meaningful Gifts",
     chinese: "禮之道",
-    copy: "Settlement gifts, VIP client rituals, family blessings, and oath-inspired collections."
+    copy: "Settlement gifts, VIP client rituals, family blessings, and oath-inspired collections.",
+    texture: "gifts"
   }
 ];
 
@@ -166,7 +188,10 @@ export function ChazenHomeExperience() {
   const [activeStep, setActiveStep] = useState(ritualSteps[0]);
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   const closingBackground = {
-    backgroundImage: `linear-gradient(90deg, rgba(16, 18, 15, 0.92), rgba(16, 18, 15, 0.72)), url("${basePath}/images/chazen-tea-room-hero-v2.png")`
+    backgroundImage: `linear-gradient(90deg, rgba(16, 18, 15, 0.92), rgba(16, 18, 15, 0.72)), url("${basePath}/images/chazen-hero-gongfu-room-v3.png")`
+  };
+  const teaTableBackground = {
+    backgroundImage: `linear-gradient(180deg, rgba(16, 18, 15, 0.06), rgba(16, 18, 15, 0.36)), url("${basePath}/images/chazen-tea-table-topdown-v3.png")`
   };
 
   return (
@@ -216,7 +241,11 @@ export function ChazenHomeExperience() {
               ))}
             </div>
 
-            <div className="tea-table-stage" aria-label="Interactive top-down tea table">
+            <div
+              className="tea-table-stage"
+              style={teaTableBackground}
+              aria-label="Interactive top-down tea table"
+            >
               {teaTools.map((tool) => (
                 <button
                   type="button"
@@ -226,11 +255,15 @@ export function ChazenHomeExperience() {
                   }`}
                   onClick={() => setActiveTool(tool)}
                   aria-label={`${tool.english} ${tool.chinese}`}
+                  data-label={tool.english}
+                  data-cn={tool.chinese}
                 >
                   <span>{tool.number}</span>
+                  <em>{tool.chinese}</em>
                 </button>
               ))}
               <div className="tea-table-grain" />
+              <p className="table-museum-note">Top-down arrangement / click each numbered vessel</p>
             </div>
 
             <article className="tool-detail">
@@ -250,6 +283,10 @@ export function ChazenHomeExperience() {
                   <dt>Used when</dt>
                   <dd>{activeTool.used}</dd>
                 </div>
+                <div>
+                  <dt>Cultural note</dt>
+                  <dd>{activeTool.note}</dd>
+                </div>
               </dl>
             </article>
           </div>
@@ -267,10 +304,12 @@ export function ChazenHomeExperience() {
             </p>
           </div>
           <div className="ritual-exhibit">
-            <div className="ritual-object">
+            <div className={`ritual-object ritual-${activeStep.visual}`}>
               <div className="ritual-gaiwan" />
-              <div className="ritual-pour" />
+              <div className="ritual-waterline" />
               <div className="ritual-steam" />
+              <div className="ritual-leaves" />
+              <div className="ritual-cup" />
             </div>
             <div className="ritual-step-panel">
               <p>{activeStep.number}</p>
@@ -304,7 +343,8 @@ export function ChazenHomeExperience() {
           </div>
           <div className="chapter-preview-grid">
             {chapterPreviews.map((chapter, index) => (
-              <article key={chapter.title} className="chapter-preview">
+              <article key={chapter.title} className={`chapter-preview chapter-${chapter.texture}`}>
+                <div className="chapter-texture" aria-hidden="true" />
                 <span>{String(index + 5).padStart(2, "0")}</span>
                 <h3>{chapter.title}</h3>
                 <strong>{chapter.chinese}</strong>

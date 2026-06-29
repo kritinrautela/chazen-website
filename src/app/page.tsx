@@ -8,7 +8,7 @@ export default function Home() {
     <main className="home-museum">
       <section className="home-hero" aria-labelledby="home-title">
         <Image
-          src={`${basePath}/images/chazen-tea-room-hero-v2.png`}
+          src={`${basePath}/images/chazen-hero-gongfu-room-v3.png`}
           alt="A dark wooden Chinese tea room with a real gongfu tea table, gaiwan, fairness cup, tasting cups, tea tray, singing bowl, steam, and garden morning light."
           fill
           priority

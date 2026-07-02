@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Building2, Check, MessageSquareText, PackageCheck, Truck } from "lucide-react";
 import { InquiryForm } from "@/components/InquiryForm";
 import { SectionHeading } from "@/components/SectionHeading";
+import { buildInquiryPath } from "@/lib/inquiry";
 
 export const metadata = {
   title: "B2B Real Estate Gifting"
@@ -22,7 +23,14 @@ export default function B2BPage() {
               with a premium tea ritual that clients can open, use, and remember in
               their new home.
             </p>
-            <Link href="/contact" className="button-primary mt-8">
+            <Link
+              href={buildInquiryPath({
+                type: "Real estate settlement",
+                message: "I would like to request a B2B sample for settlement gifting.",
+                source: "B2B hero"
+              })}
+              className="button-primary mt-8"
+            >
               Request B2B sample <ArrowRight size={17} />
             </Link>
           </div>
@@ -106,7 +114,11 @@ export default function B2BPage() {
             title="Discuss a sample or pilot order."
             copy="Submit your inquiry and our team will contact you to discuss pre-orders, B2B gifting, agency cards, and partnership opportunities."
           />
-          <InquiryForm />
+          <InquiryForm
+            defaultType="Real estate settlement"
+            defaultMessage="I would like to discuss a B2B sample or settlement gifting pilot."
+            sourceLabel="B2B real estate gifting page"
+          />
         </div>
       </section>
     </main>

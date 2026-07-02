@@ -13,3 +13,5 @@ Still missing media:
 
 - `public/audio/tea-pour.mp3`
 - `public/video/gaiwan-ritual.mp4`
+
+The site now resolves these through `src/lib/media.ts`, including the GitHub Pages `/chazen-website` base path. Drop final exports into `public/audio/` and `public/video/` using the exact filenames above.

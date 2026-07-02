@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 
 const isGithubPages = process.env.GITHUB_PAGES === "true";
 const githubRepoName = "chazen-website";
+const configuredBasePath = process.env.NEXT_PUBLIC_BASE_PATH;
+const basePath = configuredBasePath ?? (isGithubPages ? `/${githubRepoName}` : "");
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
@@ -10,8 +12,11 @@ const nextConfig: NextConfig = {
     unoptimized: true
   },
   trailingSlash: true,
-  basePath: isGithubPages ? `/${githubRepoName}` : undefined,
-  assetPrefix: isGithubPages ? `/${githubRepoName}/` : undefined
+  basePath: basePath || undefined,
+  assetPrefix: basePath ? `${basePath}/` : undefined,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath
+  }
 };
 
 export default nextConfig;

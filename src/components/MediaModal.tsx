@@ -11,37 +11,15 @@ type MediaModalProps = {
 };
 
 export function MediaModal({ open, title, src, onClose }: MediaModalProps) {
-  const [canPlay, setCanPlay] = useState(false);
-  const [checked, setChecked] = useState(false);
+  const [status, setStatus] = useState<"idle" | "loading" | "ready" | "missing">("idle");
 
   useEffect(() => {
     if (!open) {
-      setCanPlay(false);
-      setChecked(false);
+      setStatus("idle");
       return;
     }
 
-    let cancelled = false;
-    setChecked(false);
-    setCanPlay(false);
-
-    fetch(src, { method: "HEAD" })
-      .then((response) => {
-        if (!cancelled) {
-          setCanPlay(response.ok);
-          setChecked(true);
-        }
-      })
-      .catch(() => {
-        if (!cancelled) {
-          setCanPlay(false);
-          setChecked(true);
-        }
-      });
-
-    return () => {
-      cancelled = true;
-    };
+    setStatus(src ? "loading" : "missing");
   }, [open, src]);
 
   useEffect(() => {
@@ -73,8 +51,23 @@ export function MediaModal({ open, title, src, onClose }: MediaModalProps) {
           </button>
         </div>
         <div className="media-modal-stage">
-          {checked && canPlay ? (
-            <video src={src} controls playsInline className="media-modal-video" />
+          {src && status !== "missing" ? (
+            <>
+              <video
+                src={src}
+                controls
+                playsInline
+                preload="metadata"
+                className="media-modal-video"
+                onLoadedMetadata={() => setStatus("ready")}
+                onError={() => setStatus("missing")}
+              />
+              {status === "loading" && (
+                <div className="film-loading" aria-live="polite">
+                  Preparing film
+                </div>
+              )}
+            </>
           ) : (
             <div className="film-placeholder">
               <span aria-hidden="true" />

@@ -22,6 +22,8 @@ import { VideoModal } from "@/components/VideoModal";
 import { teaHistoryItems } from "@/data/teaHistory";
 import { teaObjects, type TeaObject } from "@/data/teaObjects";
 import { teaOrigins, type TeaOrigin } from "@/data/teaOrigins";
+import { buildInquiryPath } from "@/lib/inquiry";
+import { audioAssets, videoAssets, withBasePath } from "@/lib/media";
 
 type TeaTool = TeaObject;
 
@@ -43,9 +45,9 @@ const teaTools: TeaTool[] = [
     meaning: "The lid gathers aroma. The bowl reveals colour. The saucer carries heat with respect.",
     used: "Used for warming, receiving leaves, brewing, controlling aroma, and pouring.",
     note: "蓋為天，托為地，碗為人。一器之中，藏天地人。",
-    sound: "/audio/tea-pour.mp3",
+    sound: audioAssets.teaPour,
     soundLabel: "Tea Pouring",
-    video: "/video/gaiwan-ritual.mp4",
+    video: videoAssets.gaiwanRitual,
     brewingRole: "The host reads heat, colour, fragrance, and time through one open vessel.",
     x: "48%",
     y: "42%"
@@ -58,9 +60,9 @@ const teaTools: TeaTool[] = [
     meaning: "Hospitality becomes an ethic designed into the pour.",
     used: "Used immediately after each infusion leaves the gaiwan.",
     note: "Its name carries fairness. The vessel makes equality visible before the first sip.",
-    sound: "/audio/tea-pour.mp3",
+    sound: audioAssets.teaPour,
     soundLabel: "Tea Pouring",
-    video: "/video/gaiwan-ritual.mp4",
+    video: videoAssets.gaiwanRitual,
     brewingRole: "It equalises the infusion so the first guest and last guest receive the same tea.",
     x: "63%",
     y: "34%"
@@ -73,9 +75,9 @@ const teaTools: TeaTool[] = [
     meaning: "The cup asks the drinker to pause before judgment.",
     used: "Used after the fairness cup distributes each infusion.",
     note: "Small volume keeps the tea alive through repeated infusions rather than one large serving.",
-    sound: "/audio/tea-pour.mp3",
+    sound: audioAssets.teaPour,
     soundLabel: "Tea Pouring",
-    video: "/video/gaiwan-ritual.mp4",
+    video: videoAssets.gaiwanRitual,
     brewingRole: "It turns tasting into attention: aroma first, warmth second, texture last.",
     x: "72%",
     y: "58%"
@@ -88,9 +90,9 @@ const teaTools: TeaTool[] = [
     meaning: "Generosity without excess, precision without harshness.",
     used: "Used when moving leaves from presentation vessel into gaiwan.",
     note: "The scoop is a discipline of proportion: enough leaf to speak, not enough to shout.",
-    sound: "/audio/tea-pour.mp3",
+    sound: audioAssets.teaPour,
     soundLabel: "Tea Pouring",
-    video: "/video/gaiwan-ritual.mp4",
+    video: videoAssets.gaiwanRitual,
     brewingRole: "It sets proportion before water arrives, shaping intensity without spectacle.",
     x: "28%",
     y: "60%"
@@ -103,9 +105,9 @@ const teaTools: TeaTool[] = [
     meaning: "Care appears as cleanliness, distance, and restraint.",
     used: "Used during warming, rinsing, arranging, and resetting cups.",
     note: "Refinement often means removing the hand when the tool can serve more respectfully.",
-    sound: "/audio/tea-pour.mp3",
+    sound: audioAssets.teaPour,
     soundLabel: "Tea Pouring",
-    video: "/video/gaiwan-ritual.mp4",
+    video: videoAssets.gaiwanRitual,
     brewingRole: "It preserves cleanliness while hot vessels move through the ritual sequence.",
     x: "22%",
     y: "48%"
@@ -118,9 +120,9 @@ const teaTools: TeaTool[] = [
     meaning: "It contains overflow so the room can remain visually still.",
     used: "Used throughout the full brewing sequence.",
     note: "The tray makes abundance quiet. Water can move freely while the ritual remains composed.",
-    sound: "/audio/tea-pour.mp3",
+    sound: audioAssets.teaPour,
     soundLabel: "Tea Pouring",
-    video: "/video/gaiwan-ritual.mp4",
+    video: videoAssets.gaiwanRitual,
     brewingRole: "It gives water a hidden path so the table can remain calm and exact.",
     x: "50%",
     y: "52%"
@@ -133,9 +135,9 @@ const teaTools: TeaTool[] = [
     meaning: "Cleanliness is visual stillness.",
     used: "Used between pours and whenever the table needs a quiet reset.",
     note: "The cloth is the rhythm nobody notices until it is missing.",
-    sound: "/audio/tea-pour.mp3",
+    sound: audioAssets.teaPour,
     soundLabel: "Tea Pouring",
-    video: "/video/gaiwan-ritual.mp4",
+    video: videoAssets.gaiwanRitual,
     brewingRole: "It erases excess water, allowing each gesture to begin from quiet again.",
     x: "34%",
     y: "75%"
@@ -148,9 +150,9 @@ const teaTools: TeaTool[] = [
     meaning: "Release is part of refinement.",
     used: "Used during warming, rinsing, and clearing.",
     note: "The bowl gives letting go a place on the table.",
-    sound: "/audio/tea-pour.mp3",
+    sound: audioAssets.teaPour,
     soundLabel: "Tea Pouring",
-    video: "/video/gaiwan-ritual.mp4",
+    video: videoAssets.gaiwanRitual,
     brewingRole: "It keeps the necessary discard dignified, contained, and intentional.",
     x: "80%",
     y: "42%"
@@ -163,9 +165,9 @@ const teaTools: TeaTool[] = [
     meaning: "Precision without force.",
     used: "Used when a vessel or compressed tea needs gentle opening.",
     note: "The needle reminds the host that force is rarely elegance.",
-    sound: "/audio/tea-pour.mp3",
+    sound: audioAssets.teaPour,
     soundLabel: "Tea Pouring",
-    video: "/video/gaiwan-ritual.mp4",
+    video: videoAssets.gaiwanRitual,
     brewingRole: "It solves obstruction with delicacy, preserving the vessel and the leaf.",
     x: "18%",
     y: "66%"
@@ -178,9 +180,9 @@ const teaTools: TeaTool[] = [
     meaning: "A pause of respect before water transforms the leaf.",
     used: "Used before the leaves enter the warmed gaiwan.",
     note: "The leaf is first treated as an object of origin: mountain, season, craft, and weather.",
-    sound: "/audio/tea-pour.mp3",
+    sound: audioAssets.teaPour,
     soundLabel: "Tea Pouring",
-    video: "/video/gaiwan-ritual.mp4",
+    video: videoAssets.gaiwanRitual,
     brewingRole: "It turns dry leaf into a museum object before it becomes drink.",
     x: "35%",
     y: "36%"
@@ -193,9 +195,9 @@ const teaTools: TeaTool[] = [
     meaning: "One tone turns ordinary time into ritual time.",
     used: "Used before a practice, a quiet pour, or Stillness Mode.",
     note: "Not a gongfu necessity, but a CHAZEN threshold object: sound before water.",
-    sound: "/audio/singing-bowl.mp3",
+    sound: audioAssets.singingBowl,
     soundLabel: "Singing Bowl",
-    video: "/video/stillness-room.mp4",
+    video: videoAssets.stillnessRoom,
     brewingRole: "It marks the threshold between ordinary time and ritual time.",
     x: "18%",
     y: "32%"
@@ -208,7 +210,7 @@ const ritualSteps = [
     title: "Warm the vessel",
     chinese: "溫杯",
     copy: "Heat crosses porcelain first. The vessel wakes before the leaf, and the room learns the pace of the hand.",
-    image: "gaiwan-step-1-warm-bowl.jpg",
+    image: "chazen-tea-table-topdown-v3.png",
     fallback: "chazen-tea-table-topdown-v3.png"
   },
   {
@@ -216,7 +218,7 @@ const ritualSteps = [
     title: "Present the leaves",
     chinese: "賞茶",
     copy: "The dry leaf is offered to the eye: twist, roast, stem, fragrance, season, and mountain.",
-    image: "gaiwan-step-2-add-leaves.jpg",
+    image: "chazen-tea-collection-v1.png",
     fallback: "chazen-tea-collection-v1.png"
   },
   {
@@ -224,7 +226,7 @@ const ritualSteps = [
     title: "Awaken the tea",
     chinese: "醒茶",
     copy: "A brief rinse releases storage, dust, and sleep. What remains is the first clean breath of the tea.",
-    image: "gaiwan-step-3-wake-tea.jpg",
+    image: "chazen-hero-gongfu-room-v3.png",
     fallback: "chazen-hero-gongfu-room-v3.png"
   },
   {
@@ -232,7 +234,7 @@ const ritualSteps = [
     title: "Brew",
     chinese: "注水",
     copy: "Water falls with intention. Temperature, angle, seconds, and silence become architecture.",
-    image: "gaiwan-step-4-brew.jpg",
+    image: "chazen-hero-gongfu-room-v3.png",
     fallback: "chazen-hero-gongfu-room-v3.png"
   },
   {
@@ -240,7 +242,7 @@ const ritualSteps = [
     title: "Pour",
     chinese: "出湯",
     copy: "The liquor leaves before it becomes heavy. Timing is the elegance of restraint.",
-    image: "gaiwan-step-5-pour.jpg",
+    image: "chazen-tea-table-topdown-v3.png",
     fallback: "chazen-tea-table-topdown-v3.png"
   },
   {
@@ -248,7 +250,7 @@ const ritualSteps = [
     title: "Taste",
     chinese: "品茗",
     copy: "The first sip is received before it is judged: aroma, texture, warmth, return.",
-    image: "gaiwan-step-6-taste.jpg",
+    image: "chazen-song-diancha-v1.png",
     fallback: "chazen-song-diancha-v1.png"
   }
 ];
@@ -527,6 +529,98 @@ const giftTypes = [
   "Brotherhood / Oath Collection"
 ];
 
+const giftPathways = [
+  {
+    title: "Real Estate Settlement Gift",
+    chinese: "交房茶禮",
+    for: "New homeowners, premium agents, settlement day.",
+    includes: "Tea, gaiwan or cups, blessing scroll, seal card, private message.",
+    meaning: "A house receives warmth before furniture arrives.",
+    tea: "Da Hong Pao or Bai Hao Yin Zhen",
+    figure: "Fu 福"
+  },
+  {
+    title: "Corporate / VIP Gift",
+    chinese: "企業貴賓禮",
+    for: "Clients, partners, founders, and senior hosts.",
+    includes: "Rock tea, ceremonial card, dark lacquer packaging, optional branded insert.",
+    meaning: "Respect without shouting, status without noise.",
+    tea: "Da Hong Pao",
+    figure: "Guan Yu 關羽"
+  },
+  {
+    title: "Family Blessing Gift",
+    chinese: "家族祝福禮",
+    for: "Parents, elders, birthdays, house gatherings.",
+    includes: "White or aged tea, Fu Lu Shou card, soft cloth wrap, blessing note.",
+    meaning: "A cup offered slowly says: may your days be long and gently held.",
+    tea: "Bai Hao Yin Zhen or Pu'er",
+    figure: "Shou 壽"
+  },
+  {
+    title: "Personal Ritual Set",
+    chinese: "個人靜心茶席",
+    for: "Daily practice, meditation, creative focus, recovery after work.",
+    includes: "Tea, tasting cup, sound card, ritual guide, stillness practice.",
+    meaning: "A private room made from one cup and one breath.",
+    tea: "Longjing or High Mountain Oolong",
+    figure: "Lu Yu 陸羽"
+  }
+];
+
+const entranceRooms = [
+  {
+    number: "01",
+    eyebrow: "Tea State Reflection",
+    title: "Notice your current state before choosing a tea.",
+    chinese: "先覺察當下狀態，再進入一盞茶。",
+    body: "A guided reflection for sleep, stress, focus, mood, and pace. It is not a diagnosis; it is a quiet way to understand what kind of tea ritual may support today.",
+    cta: "Begin Reflection",
+    href: "/tea-assessment/",
+    tone: "reflection"
+  },
+  {
+    number: "02",
+    eyebrow: "Tea Culture",
+    title: "Enter the cultural memory of Chinese tea.",
+    chinese: "由神農、陸羽、宋代點茶，到當代茶禪。",
+    body: "Begin with myth, medicine, hospitality, scholar practice, Song aesthetics, and the quiet cultural logic behind Chazen.",
+    cta: "Explore Tea Culture",
+    href: "#tea-history",
+    tone: "culture"
+  },
+  {
+    number: "03",
+    eyebrow: "Tea Ritual",
+    title: "Learn the pace of the gaiwan and the breath.",
+    chinese: "茶席不是表演，而是水、器、香氣與時間。",
+    body: "Move from vessel warming to leaf, water, pour, taste, and stillness. The ritual room makes the practice visible and calm.",
+    cta: "Enter Ritual Room",
+    href: "/tea-ritual/",
+    tone: "ritual"
+  },
+  {
+    number: "04",
+    eyebrow: "Tea Atlas",
+    title: "Read origin, climate, and leaf as one map.",
+    chinese: "茶不是座標，而是山水、氣候與工藝。",
+    body: "Explore tea regions and styles through landscape, craft, aroma, and ritual moments.",
+    cta: "Open Tea Atlas",
+    href: "/tea-atlas/",
+    tone: "atlas"
+  },
+  {
+    number: "05",
+    eyebrow: "Journal",
+    title: "Read field notes from the house of tea and stillness.",
+    chinese: "以文章整理茶文化、茶席與靜心生活。",
+    body: "Short editorial notes guide visitors into deeper cultural reading without making the homepage carry every detail.",
+    cta: "Read Journal Notes",
+    href: "#journal",
+    tone: "journal"
+  }
+] as const;
+
 const journalCards = [
   ["Mindfulness", "The Way of Tea and Mindfulness", "Why the pause before pouring matters as much as the pour."],
   ["Practice", "Why Tea Is a Spiritual Practice", "The cup as a small room for attention, breath, and return."],
@@ -554,11 +648,10 @@ export function ChazenHomeExperience() {
   const rainRef = useRef<HTMLAudioElement | null>(null);
   const soundTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const stepRailRef = useRef<HTMLDivElement>(null);
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-  const imageUrl = (name: string) => `${basePath}/images/${name}`;
-  const mediaUrl = (path: string) => `${basePath}${path}`;
-  const teaCollectionUrl = `${basePath}/tea-collection/`;
-
+  const imageUrl = (name: string) => withBasePath(`/images/chazen-generated/${name}`);
+  const mediaUrl = (path: string) => withBasePath(path);
+  const teaCollectionUrl = withBasePath("/tea-collection/");
+  const teaAssessmentUrl = withBasePath("/tea-assessment/");
   const scrollToStepRail = () => {
     stepRailRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
@@ -642,6 +735,101 @@ export function ChazenHomeExperience() {
 
   return (
     <>
+      <section id="chazen-entrance" className="museum-section culture-entrance-section">
+        <div className="museum-container culture-entrance-panel">
+          <div className="culture-entrance-head">
+            <p className="museum-kicker">Homepage Entrance / 文化入口</p>
+            <h2>Begin with your state. Then enter the culture of tea.</h2>
+            <p>
+              The homepage is a threshold, not a catalogue. It gives visitors a clear first step:
+              reflect on their current state, then choose a cultural room to explore.
+            </p>
+          </div>
+          <div className="culture-room-grid" aria-label="CHAZEN cultural rooms">
+            {entranceRooms.map((room) => {
+              const href =
+                room.href === "/tea-assessment/"
+                  ? teaAssessmentUrl
+                  : room.href.startsWith("/")
+                    ? withBasePath(room.href)
+                    : room.href;
+
+              return (
+                <article key={room.number} className={`culture-room culture-room-${room.tone}`}>
+                  <span>{room.number}</span>
+                  <p className="museum-kicker">{room.eyebrow}</p>
+                  <h3>{room.title}</h3>
+                  <p lang="zh-Hant">{room.chinese}</p>
+                  <p>{room.body}</p>
+                  <a href={href}>
+                    {room.cta} <ArrowRight size={15} aria-hidden="true" />
+                  </a>
+                </article>
+              );
+            })}
+          </div>
+          <div className="culture-entrance-cta">
+            <a href={teaAssessmentUrl} className="gold-cta compact">
+              Begin Your Tea State Reflection
+            </a>
+            <a href="#philosophy" className="museum-link-button dark-on-light">
+              Read Chazen Philosophy
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="ritual-media-room" className="museum-section ritual-media-section">
+        <div className="museum-container ritual-media-panel">
+          <div className="ritual-media-copy">
+            <p className="museum-kicker">Ritual Film & Sound / 茶禪聲影室</p>
+            <h2>The ritual should be seen, heard, and felt before it is explained.</h2>
+            <p>
+              A cultural tea experience needs atmosphere, not only copy. CHAZEN opens a room
+              of film, tea ambience, bowl tone, pour sound, and garden rain.
+            </p>
+            <p lang="zh-Hant">先聽見一聲鉢音，再看見一席茶，才知道茶禪不是普通茶店。</p>
+            <div className="ritual-audio-grid" aria-label="CHAZEN sound previews">
+              {[
+                ["Singing Bowl", "冥想鉢", audioAssets.singingBowl],
+                ["Tea Pour", "注水聲", audioAssets.teaPour],
+                ["Garden Rain", "庭雨", audioAssets.gardenRain]
+              ].map(([label, chinese, src]) => (
+                <div key={label} className="ritual-audio-card">
+                  <strong>{label}</strong>
+                  <span lang="zh-Hant">{chinese}</span>
+                  <audio controls preload="metadata" src={withBasePath(src)} />
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="ritual-media-stage">
+            <video
+              controls
+              playsInline
+              preload="metadata"
+              poster={imageUrl("chazen-tea-room-hero-v2.png")}
+              src={withBasePath(videoAssets.chazenRitualFilm)}
+            />
+            <div className="ritual-media-film-list">
+              {[
+                ["Gaiwan Ritual", videoAssets.gaiwanRitual],
+                ["Song Dian Cha", videoAssets.dianCha],
+                ["Stillness Room", videoAssets.stillnessRoom]
+              ].map(([label, src]) => (
+                <button
+                  key={label}
+                  type="button"
+                  onClick={() => openVideo(label, src)}
+                >
+                  <PlayCircle size={15} aria-hidden="true" /> {label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="philosophy" className="museum-section philosophy-exhibit">
         <div className="museum-container philosophy-panel">
           <div className="philosophy-art-wall" aria-hidden="true">
@@ -659,12 +847,26 @@ export function ChazenHomeExperience() {
             <h2>Tea is not just a drink. It is a way of returning.</h2>
             <p lang="zh-Hant">茶不只是飲品，是回到自身的一種方式。</p>
             <div className="cultural-copy-block">
-              <p>Tea began as medicine. It became hospitality. It became art. It became stillness.</p>
-              <p lang="zh-Hant">茶，曾是藥，也是待客之禮，是文人的審美，也是靜心的入口。</p>
+              <p>
+                Chazen believes tea is a way to understand your state. Through tea,
+                breath, sound, and cultural memory, we help modern people slow down,
+                notice sleep, stress, focus, and mood, then return to a calmer way of living.
+              </p>
+              <p lang="zh-Hant">
+                Chazen 相信，茶唔只係飲品，而係一種理解自己狀態嘅方式。
+                透過茶、呼吸、聲音同中國文化記憶，我哋希望幫助現代人慢落嚟，
+                覺察睡眠、壓力、專注同情緒，再用一盞茶回到安定。
+              </p>
             </div>
             <div className="chapter-actions">
+              <a href={teaAssessmentUrl} className="museum-link-button">
+                Begin Your Tea State Reflection <ArrowRight size={15} aria-hidden="true" />
+              </a>
               <a href="#tea-history" className="museum-link-button">
-                Explore Tea Philosophy <ArrowRight size={15} aria-hidden="true" />
+                Explore Tea Culture <BookOpen size={15} aria-hidden="true" />
+              </a>
+              <a href="#ritual-media-room" className="museum-link-button">
+                Enter the Ritual Room <Volume2 size={15} aria-hidden="true" />
               </a>
               <button
                 type="button"
@@ -677,25 +879,18 @@ export function ChazenHomeExperience() {
                       chinese: "茶不只是飲品，是回到自身的一種方式。",
                       body: [
                         "In Chinese culture, tea moves through many lives: remedy, offering, social etiquette, scholar practice, and quiet discipline.",
-                        "CHAZEN treats this movement as a living museum. The cup is small, but it can hold origin, climate, craft, sound, and breath."
+                        "CHAZEN uses that cultural memory to help modern visitors notice their state and return through a small ritual of tea, breath, and sound."
                       ],
                       items: [
-                        { label: "Medicine", value: "Observation of leaf, body, and balance." },
-                        { label: "Hospitality", value: "A guest receives care through temperature, timing, and order." },
-                        { label: "Stillness", value: "The ritual creates a threshold between noise and attention." }
+                        { label: "State", value: "Sleep, stress, focus, mood, and pace." },
+                        { label: "Culture", value: "Tea history, vessels, origin, and ritual memory." },
+                        { label: "Return", value: "A quieter way to re-enter the day through one cup." }
                       ]
                     })
                   )
                 }
               >
-                Read Tea History <BookOpen size={15} aria-hidden="true" />
-              </button>
-              <button
-                type="button"
-                className="museum-link-button"
-                onClick={() => playSound("/audio/singing-bowl.mp3", "Singing Bowl")}
-              >
-                Hear the Singing Bowl <Volume2 size={15} aria-hidden="true" />
+                Read the Mission
               </button>
             </div>
           </div>
@@ -828,10 +1023,10 @@ export function ChazenHomeExperience() {
           </div>
 
           <div className="chapter-actions ritual-actions">
-            <button type="button" className="gold-cta compact" onClick={() => openVideo("Gaiwan Ritual", "/video/gaiwan-ritual.mp4")}>
+            <button type="button" className="gold-cta compact" onClick={() => openVideo("Gaiwan Ritual", videoAssets.gaiwanRitual)}>
               Watch the Gaiwan Ritual <PlayCircle size={15} aria-hidden="true" />
             </button>
-            <button type="button" className="dark-cta compact" onClick={() => playSound("/audio/tea-pour.mp3", "Tea Pouring")}>
+            <button type="button" className="dark-cta compact" onClick={() => playSound(audioAssets.teaPour, "Tea Pouring")}>
               Play Tea Pour Sound <Volume2 size={15} aria-hidden="true" />
             </button>
             <button type="button" className="dark-cta compact" onClick={() => setActiveStep(ritualSteps[0])}>
@@ -900,7 +1095,7 @@ export function ChazenHomeExperience() {
                 ))}
               </div>
               <div className="chapter-actions">
-                <button type="button" className="museum-link-button dark-on-light" onClick={() => openVideo("Dian Cha", "/video/dian-cha.mp4")}>
+                <button type="button" className="museum-link-button dark-on-light" onClick={() => openVideo("Dian Cha", videoAssets.dianCha)}>
                   Watch Dian Cha
                 </button>
                 <button
@@ -950,10 +1145,11 @@ export function ChazenHomeExperience() {
 
           <div className="museum-duo-grid">
             <StillnessPractice
+              visualSrc={imageUrl("chazen-hero-gongfu-room-v3.png")}
               onStart={() => setBreathingOpen(true)}
-              onPlayBowl={() => playSound("/audio/singing-bowl.mp3", "Singing Bowl")}
+              onPlayBowl={() => playSound(audioAssets.singingBowl, "Singing Bowl")}
               onStop={stopSound}
-              onWatchRoom={() => openVideo("Stillness Room", "/video/stillness-room.mp4")}
+              onWatchRoom={() => openVideo("Stillness Room", videoAssets.stillnessRoom)}
               onMood={() =>
                 setInfoModal(
                   makeInfo({
@@ -974,6 +1170,7 @@ export function ChazenHomeExperience() {
             <TeaAtlasMap
               origins={teaOrigins}
               activeOrigin={activeRegion}
+              visualSrc={imageUrl("chazen-shanshui-chapter-2.png")}
               onSelect={setActiveRegion}
               onExplore={(origin) =>
                 setInfoModal(
@@ -1010,9 +1207,20 @@ export function ChazenHomeExperience() {
               <p className="museum-kicker">Chapter 09 / Wisdom Collection / 東方智慧 · 傳世典範</p>
               <h2>Character as blessing, memory, and moral form.</h2>
               <div className="wisdom-selected-exhibit">
-                <span className="wisdom-selected-mark" lang="zh-Hant" aria-hidden="true">
-                  {activeWisdom.character}
-                </span>
+                <div className="wisdom-image-panel">
+                  <Image
+                    src={imageUrl("chazen-gift-box-v1.png")}
+                    alt="A refined CHAZEN gift table used as a visual setting for wisdom figures and blessing collections."
+                    fill
+                    sizes="(max-width: 900px) 100vw, 28vw"
+                  />
+                  <div className="wisdom-selected-portrait" aria-hidden="true">
+                    <span className="portrait-scroll" />
+                    <span className="portrait-head" />
+                    <span className="portrait-robe" />
+                    <span className="portrait-seal" lang="zh-Hant">{activeWisdom.character}</span>
+                  </div>
+                </div>
                 <div>
                   <p className="museum-kicker">Selected Figure / 人物標本</p>
                   <h3>{activeWisdom.name}</h3>
@@ -1084,8 +1292,10 @@ export function ChazenHomeExperience() {
                   onClick={() => setActiveWisdom(card)}
                   aria-pressed={activeWisdom.name === card.name}
                 >
-                  <span className="wisdom-portrait" lang="zh-Hant" aria-hidden="true">
-                    {card.character}
+                  <span className="wisdom-portrait" aria-hidden="true">
+                    <span className="portrait-head" />
+                    <span className="portrait-robe" />
+                    <em lang="zh-Hant">{card.character}</em>
                   </span>
                   <strong>{card.name}</strong>
                   <em lang="zh-Hant">{card.chinese}</em>
@@ -1156,14 +1366,91 @@ export function ChazenHomeExperience() {
             </div>
           </article>
 
+          <article className="assessment-preview-panel">
+            <div className="assessment-preview-visual" aria-hidden="true">
+              <span className="assessment-scroll-card">
+                <em>茶</em>
+                <strong>Ritual Profile</strong>
+              </span>
+              <span className="assessment-cup" />
+              <span className="assessment-seal">禪</span>
+            </div>
+            <div className="assessment-preview-copy">
+              <p className="museum-kicker">Chapter 11 / Tea Assessment / 茶禪評估</p>
+              <h2>Choose by person, mood, time, and meaning.</h2>
+              <p>
+                The CHAZEN assessment turns taste preference, emotional state, recipient,
+                and ritual style into a calm tea and gift recommendation.
+              </p>
+              <p lang="zh-Hant">不是只問你喜歡什麼味道，而是問這杯茶要給誰、在何時、承載什麼心意。</p>
+              <div className="chapter-actions">
+                <a href={teaAssessmentUrl} className="gold-cta compact">
+                  Start Tea Assessment
+                </a>
+                <button
+                  type="button"
+                  className="museum-link-button dark-on-light"
+                  onClick={() =>
+                    setInfoModal(
+                      makeInfo({
+                        kicker: "Product Preview / 茶禪評估",
+                        title: "CHAZEN Ritual Assessment",
+                        chinese: "茶禪風格評估",
+                        body: [
+                          "The assessment is structured for a future paid personal tea profile.",
+                          "For now it gives a refined recommendation and invites private consultation."
+                        ],
+                        items: [
+                          { label: "Inputs", value: "Mood, time, taste, recipient, occasion, ritual, caffeine, desired outcome." },
+                          { label: "Output", value: "Tea temperament, tea type, ritual style, gift direction, collection, sound pairing." }
+                        ]
+                      })
+                    )
+                  }
+                >
+                  View Product Logic
+                </button>
+              </div>
+            </div>
+          </article>
+
           <article id="meaningful-gifts" className="gift-panel">
             <div>
-              <p className="museum-kicker">Chapter 11 / Meaningful Gifts / 禮之道</p>
+              <p className="museum-kicker">Chapter 12 / Meaningful Gifts / 禮之道</p>
               <h2>A gift should not only be received. It should be remembered.</h2>
               <p lang="zh-Hant">禮，不只是送出。是被記住。</p>
               <div className="gift-tags">
                 {giftTypes.map((item) => (
                   <span key={item}>{item}</span>
+                ))}
+              </div>
+              <div className="gift-pathway-grid">
+                {giftPathways.map((pathway, index) => (
+                  <button
+                    type="button"
+                    key={pathway.title}
+                    onClick={() =>
+                      setInfoModal(
+                        makeInfo({
+                          kicker: "Gift Pathway / 禮物方向",
+                          title: pathway.title,
+                          chinese: pathway.chinese,
+                          body: [pathway.for, pathway.meaning],
+                          items: [
+                            { label: "Includes", value: pathway.includes },
+                            { label: "Recommended Tea", value: pathway.tea },
+                            { label: "Wisdom Character", value: pathway.figure }
+                          ],
+                          action: "Private inquiry will shape packaging, tea direction, card wording, and recipient meaning."
+                        })
+                      )
+                    }
+                  >
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <strong>{pathway.title}</strong>
+                    <em lang="zh-Hant">{pathway.chinese}</em>
+                    <p>{pathway.meaning}</p>
+                  </button>
                 ))}
               </div>
               <div className="chapter-actions">
@@ -1202,9 +1489,17 @@ export function ChazenHomeExperience() {
             </div>
           </article>
 
-          <article className="journal-panel">
+          <article id="journal" className="journal-panel">
+            <div className="journal-image">
+              <Image
+                src={imageUrl("chazen-shanshui-chapter-2.png")}
+                alt="Ink landscape and tea atmosphere for CHAZEN editorial field notes."
+                fill
+                sizes="(max-width: 900px) 100vw, 36vw"
+              />
+            </div>
             <div className="journal-head">
-              <p className="museum-kicker">Chapter 12 / Journal / 茶禪誌</p>
+              <p className="museum-kicker">Chapter 13 / Journal / 茶禪誌</p>
               <h2>Field notes from the house of tea and stillness.</h2>
               <button
                 type="button"
@@ -1256,13 +1551,13 @@ export function ChazenHomeExperience() {
           <p className="display-title">CHAZEN 茶禪</p>
           <h2>Tea. Return. Stillness.</h2>
           <div className="brand-footer-links">
-            <a href="mailto:hello@chazen.example">
+            <a href={withBasePath(buildInquiryPath({ source: "Home closing statement" }))}>
               <Mail size={15} aria-hidden="true" /> Inquiry
             </a>
             <a href="#tea-table">
               <Globe2 size={15} aria-hidden="true" /> Museum
             </a>
-            <button type="button" onClick={() => openVideo("Gaiwan Ritual", "/video/gaiwan-ritual.mp4")}>
+            <button type="button" onClick={() => openVideo("Gaiwan Ritual", videoAssets.gaiwanRitual)}>
               <Volume2 size={15} aria-hidden="true" /> Ritual
             </button>
           </div>
@@ -1338,10 +1633,15 @@ function BreathingOverlay({ onClose }: { onClose: () => void }) {
           <X size={18} aria-hidden="true" />
         </button>
         <div className="breathing-orb" aria-hidden="true" />
-        <p className="museum-kicker">60-Second Practice / 靜心茶室</p>
-        <h2 id="breathing-title">Breathe in. Return to the tea.</h2>
-        <p>Breathe out. Return to yourself.</p>
+        <p className="museum-kicker">3-Minute Practice / 靜心茶室</p>
+        <h2 id="breathing-title">Hold the cup. Let the steam set the pace.</h2>
+        <p>Inhale for 4. Exhale for 6. Notice aroma. Return to stillness. Drink slowly.</p>
         <p lang="zh-Hant">吸氣，回到茶。呼氣，回到自己。</p>
+        <div className="breathing-steps">
+          {["捧盞", "隨煙而息", "聞香", "回靜", "慢品"].map((step, index) => (
+            <span key={step}>{String(index + 1).padStart(2, "0")} {step}</span>
+          ))}
+        </div>
       </article>
     </div>
   );

@@ -8,10 +8,13 @@ type TeaHistoryTimelineProps = {
   onEnterTimeline: () => void;
 };
 
+const eraDates = ["Mythic", "618-907", "960-1279", "1368-1644", "1644-1912", "Now"];
+
 export function TeaHistoryTimeline({ onEnterTimeline }: TeaHistoryTimelineProps) {
   const [activeItem, setActiveItem] = useState(teaHistoryItems[0]);
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   const imageUrl = (name: string) => `${basePath}/images/${name}`;
+  const activeIndex = teaHistoryItems.findIndex((item) => item.number === activeItem.number);
 
   return (
     <section id="tea-history" className="museum-section history-timeline-section">
@@ -54,24 +57,50 @@ export function TeaHistoryTimeline({ onEnterTimeline }: TeaHistoryTimelineProps)
             </article>
           </div>
 
-          <div className="history-timeline history-timeline-phase2">
-          {teaHistoryItems.map((item) => (
-            <button
-              type="button"
-              key={item.number}
-              className={activeItem.number === item.number ? "is-active" : ""}
-              onClick={() => setActiveItem(item)}
-              onMouseEnter={() => setActiveItem(item)}
-              onFocus={() => setActiveItem(item)}
-              aria-pressed={activeItem.number === item.number}
-            >
-              <span>{item.number}</span>
-              <em lang="zh-Hant">{item.character}</em>
-              <h3>{item.title}</h3>
-              <strong lang="zh-Hant">{item.chinese}</strong>
-              <p>{item.copy}</p>
-            </button>
-          ))}
+          <div className="history-timeline-cabinet">
+            <div className="dynasty-rail" aria-label="Interactive tea history timeline">
+              <span className="dynasty-rail-line" aria-hidden="true" />
+              <span
+                className="dynasty-rail-progress"
+                style={{ height: `${((activeIndex + 1) / teaHistoryItems.length) * 100}%` }}
+                aria-hidden="true"
+              />
+              {teaHistoryItems.map((item, index) => (
+                <button
+                  type="button"
+                  key={item.number}
+                  className={activeItem.number === item.number ? "is-active" : ""}
+                  onClick={() => setActiveItem(item)}
+                  onMouseEnter={() => setActiveItem(item)}
+                  onFocus={() => setActiveItem(item)}
+                  aria-pressed={activeItem.number === item.number}
+                >
+                  <span className="dynasty-marker">{item.number}</span>
+                  <span className="dynasty-date">{eraDates[index]}</span>
+                  <strong>{item.title}</strong>
+                  <em lang="zh-Hant">{item.chinese}</em>
+                </button>
+              ))}
+            </div>
+            <article className="dynasty-story-card">
+              <p className="museum-kicker">Selected Era / 年代標本</p>
+              <div className="dynasty-story-portrait" aria-hidden="true">
+                <span lang="zh-Hant">{activeItem.character}</span>
+              </div>
+              <h3>{activeItem.title}</h3>
+              <strong lang="zh-Hant">{activeItem.chinese}</strong>
+              <p>{activeItem.story}</p>
+              <dl>
+                <div>
+                  <dt>Object</dt>
+                  <dd>{activeItem.object}</dd>
+                </div>
+                <div>
+                  <dt>CHAZEN Meaning</dt>
+                  <dd>{activeItem.chazenMeaning}</dd>
+                </div>
+              </dl>
+            </article>
           </div>
         </div>
         <div className="knowledge-grid" aria-label="Tea culture knowledge cards">

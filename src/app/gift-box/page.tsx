@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Check, Package, Send } from "lucide-react";
 import { ProductVisual } from "@/components/ProductVisual";
 import { SectionHeading } from "@/components/SectionHeading";
+import { buildInquiryPath } from "@/lib/inquiry";
 import { giftBoxItems, site } from "@/lib/site";
 
 export const metadata = {
@@ -25,7 +26,14 @@ export default function GiftBoxPage() {
               outer gift box.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/contact" className="button-primary">
+              <Link
+                href={buildInquiryPath({
+                  type: "Personal gift",
+                  message: "I would like to inquire about or pre-order the Chazen Tea Ritual Gift Box.",
+                  source: "Gift box hero"
+                })}
+                className="button-primary"
+              >
                 Inquire or pre-order <ArrowRight size={17} />
               </Link>
               <Link href="/b2b" className="button-secondary">
@@ -109,7 +117,14 @@ export default function GiftBoxPage() {
             <Link href="/b2b" className="button-primary">
               Explore settlement gifting <Package size={17} />
             </Link>
-            <Link href="/contact" className="button-secondary">
+            <Link
+              href={buildInquiryPath({
+                type: "Real estate settlement",
+                message: "I would like to request a B2B sample for settlement gifting.",
+                source: "Gift box B2B section"
+              })}
+              className="button-secondary"
+            >
               Request a B2B sample <Send size={17} />
             </Link>
           </div>

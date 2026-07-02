@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MobileNav } from "@/components/MobileNav";
+import { buildInquiryPath } from "@/lib/inquiry";
 import { navItems, site } from "@/lib/site";
 
 export function Header() {
@@ -17,7 +18,7 @@ export function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-2">
-          <Link href="/contact" className="header-inquire button-light">
+          <Link href={buildInquiryPath({ source: "Site header" })} className="header-inquire button-light">
             Private inquiry
           </Link>
           <MobileNav />

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { buildInquiryPath } from "@/lib/inquiry";
 import { navItems } from "@/lib/site";
 
 export function MobileNav() {
@@ -38,7 +39,7 @@ export function MobileNav() {
             ))}
           </div>
           <Link
-            href="/contact"
+            href={buildInquiryPath({ source: "Mobile menu" })}
             className="mobile-menu-inquire button-primary mt-3"
             onClick={() => setOpen(false)}
           >

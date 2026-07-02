@@ -4,16 +4,16 @@ import Image from "next/image";
 import { useState } from "react";
 import { ChazenHomeExperience } from "@/components/ChazenHomeExperience";
 import { VideoModal } from "@/components/VideoModal";
+import { videoAssets, withBasePath } from "@/lib/media";
 
 export default function Home() {
   const [filmOpen, setFilmOpen] = useState(false);
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
   return (
     <main className="museum-home">
       <section className="cinema-hero" aria-labelledby="home-title">
         <Image
-          src={`${basePath}/images/chazen-tea-room-hero-v2.png`}
+          src={withBasePath("/images/chazen-generated/chazen-tea-room-hero-v2.png")}
           alt="A dark wooden Chinese tea room with a real gongfu tea table, gaiwan, fairness cup, tasting cups, tea tray, singing bowl, steam, and garden morning light."
           fill
           priority
@@ -29,21 +29,26 @@ export default function Home() {
             </h1>
             <div className="cinema-tagline">
               <p>
-                One Cup.
-                <br />
-                One Breath.
-                <br />
-                One Return.
+                A digital Chinese tea ritual for culture, reflection, sound, and return.
               </p>
-              <p lang="zh-Hant">一盞茶，一口氣，回到當下。</p>
+              <p lang="zh-Hant">一盞茶，讓人回到自己。</p>
             </div>
             <div className="hero-actions">
-              <a href="#tea-table" className="museum-cta">
-                Enter the Ritual
+              <a href={withBasePath("/tea-assessment/")} className="museum-cta">
+                Begin Tea State Reflection
               </a>
-              <button type="button" className="museum-cta museum-cta-secondary" onClick={() => setFilmOpen(true)}>
-                Watch Ritual Film
-              </button>
+              <a href="#chazen-entrance" className="museum-cta museum-cta-secondary">
+                Explore the Culture
+              </a>
+              <a href="#ritual-media-room" className="museum-cta museum-cta-secondary">
+                Enter the Ritual Room
+              </a>
+            </div>
+            <div className="hero-commerce-rail" aria-label="CHAZEN product pillars">
+              <span>Reflection <em lang="zh-Hant">覺察</em></span>
+              <span>Tea Culture <em lang="zh-Hant">茶史</em></span>
+              <span>Ritual Room <em lang="zh-Hant">茶席</em></span>
+              <span>Tea Atlas <em lang="zh-Hant">茶地圖</em></span>
             </div>
           </div>
           <aside className="hero-object-caption" aria-label="Hero object caption">
@@ -52,6 +57,9 @@ export default function Home() {
               Gaiwan, fairness cup, tasting cups, tea tray, singing bowl, morning garden light.
             </p>
             <small lang="zh-Hant">蓋碗、公道杯、品茗杯、茶盤、冥想鉢與晨光。</small>
+            <button type="button" onClick={() => setFilmOpen(true)}>
+              Watch Ritual Film
+            </button>
           </aside>
           <div className="hero-scroll-cue" aria-hidden="true">
             <span />
@@ -64,7 +72,7 @@ export default function Home() {
       <VideoModal
         open={filmOpen}
         title="Ritual Film Coming Soon"
-        src={`${basePath}/video/chazen-ritual-film.mp4`}
+        src={withBasePath(videoAssets.chazenRitualFilm)}
         onClose={() => setFilmOpen(false)}
       />
     </main>

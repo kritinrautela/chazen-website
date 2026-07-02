@@ -1,13 +1,14 @@
 export const site = {
   name: "Chazen 茶禪",
-  tagline: "One Cup. One Breath. One Return.",
+  tagline: "Premium Chinese tea rituals, sound, and meaningful gifts for moments of return.",
   description:
-    "A luxury digital tea museum, ritual experience, meditation room, and premium gifting house rooted in Chinese tea culture.",
+    "A premium Chinese tea ritual, assessment, sound meditation, and cultural gifting house rooted in Chinese tea culture.",
   price: "A$78",
-  email: "hello@chazen.example"
+  email: process.env.NEXT_PUBLIC_CHAZEN_INQUIRY_EMAIL ?? "hello@chazentea.com.au"
 };
 
 export const navItems = [
+  { label: "Assessment", href: "/tea-assessment" },
   { label: "Philosophy", href: "/#philosophy" },
   { label: "Tea Table", href: "/#tea-table" },
   { label: "Ritual", href: "/#gaiwan-ritual" },

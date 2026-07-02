@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Gift, Sparkles } from "lucide-react";
 import { SectionHeading } from "@/components/SectionHeading";
+import { buildInquiryPath } from "@/lib/inquiry";
 import { ritualFlow, ritualTypes } from "@/lib/site";
 
 export const metadata = {
@@ -67,7 +68,14 @@ export default function TeaRitualPage() {
             <Link href="/ai-tea-guide" className="button-secondary border-porcelain/30 text-porcelain">
               Preview Assessment <Sparkles size={17} />
             </Link>
-            <Link href="/contact" className="button-light">
+            <Link
+              href={buildInquiryPath({
+                type: "Tea recommendation",
+                message: "I would like to inquire about a Chazen tea ritual or recommendation.",
+                source: "Tea ritual page"
+              })}
+              className="button-light"
+            >
               Inquire <ArrowRight size={17} />
             </Link>
           </div>

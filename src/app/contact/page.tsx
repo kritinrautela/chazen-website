@@ -15,7 +15,7 @@ export default function ContactPage() {
             title="Pre-order, request a B2B sample, or discuss partnership."
             copy="Submit your inquiry and our team will contact you to discuss pre-orders, B2B gifting, or partnership opportunities."
           />
-          <InquiryForm />
+          <InquiryForm sourceLabel="Contact page" />
         </div>
       </section>
     </main>

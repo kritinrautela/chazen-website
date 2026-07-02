@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useMemo, useState } from "react";
+import { buildInquiryPath } from "@/lib/inquiry";
 
 const filters = ["All", "Oolong", "Green", "White", "Black / Red", "Pu'er", "Japanese"];
 
@@ -18,6 +19,8 @@ const teas = [
     aroma: "Wet stone, orchid, charcoal warmth.",
     ritual: "For ceremony, important guests, and conversations with gravity.",
     note: "A rock tea whose luxury comes from restraint: mountain, roast, and aftertaste.",
+    gift: "VIP client, mentor, or ceremonial host gift.",
+    caffeine: "Medium-high intensity",
     liquor: "#9b4f2d",
     palette: "rock"
   },
@@ -33,6 +36,8 @@ const teas = [
     aroma: "Toasted chestnut, tender greens, lake air.",
     ritual: "A clear morning tea before work, writing, or decision.",
     note: "Longjing is clarity as a leaf: quiet, flat, luminous, and precise.",
+    gift: "Study, career, focus, or new-beginning gift.",
+    caffeine: "Medium intensity",
     liquor: "#c9c36a",
     palette: "green"
   },
@@ -48,6 +53,8 @@ const teas = [
     aroma: "Warm hay, white flower, soft honey.",
     ritual: "For afternoon recovery and gentle conversation.",
     note: "A tea of patience; the luxury is in what is not forced.",
+    gift: "Family, elder, wellness, or soft blessing gift.",
+    caffeine: "Low-medium intensity",
     liquor: "#d8c88f",
     palette: "white"
   },
@@ -63,6 +70,8 @@ const teas = [
     aroma: "Orchid, cream, garden air.",
     ritual: "For welcoming a guest with fragrance before speech.",
     note: "A tea that teaches the host to let aroma arrive before explanation.",
+    gift: "Hospitality, partner, or fragrant welcome gift.",
+    caffeine: "Medium intensity",
     liquor: "#d2b35f",
     palette: "orchid"
   },
@@ -78,6 +87,8 @@ const teas = [
     aroma: "Old timber, date, rain on earth.",
     ritual: "After dinner, when time can become slower.",
     note: "Pu'er is less a product than a record of storage, climate, and patience.",
+    gift: "Elder, family continuity, or long-memory gift.",
+    caffeine: "Medium intensity",
     liquor: "#6f3826",
     palette: "aged"
   },
@@ -93,6 +104,8 @@ const teas = [
     aroma: "Alpine flower, cream, cold mist.",
     ritual: "A reset between work and evening.",
     note: "Altitude becomes texture: soft, lifted, and quietly expansive.",
+    gift: "Personal stillness, partner, or calm reset gift.",
+    caffeine: "Medium intensity",
     liquor: "#d7c36c",
     palette: "mountain"
   },
@@ -108,6 +121,8 @@ const teas = [
     aroma: "Pine resin, longan, ember.",
     ritual: "For courage, winter, and protective gifting.",
     note: "The smoke should feel architectural, not loud: a room made of pine and memory.",
+    gift: "Courage, protection, or bold new-beginning gift.",
+    caffeine: "Medium-high intensity",
     liquor: "#8a3726",
     palette: "ember"
   },
@@ -123,6 +138,8 @@ const teas = [
     aroma: "Stone mill, sea air, young greens.",
     ritual: "For a threshold moment before meditation or creative work.",
     note: "A bridge to powdered tea culture: focused, tactile, and immediate.",
+    gift: "Creative focus, meditation, or cross-cultural tea gift.",
+    caffeine: "High intensity",
     liquor: "#4f6f3b",
     palette: "matcha"
   }
@@ -212,7 +229,28 @@ export function TeaCollectionExperience({ basePath }: TeaCollectionExperiencePro
                   <dt>Ritual</dt>
                   <dd>{selectedTea.ritual}</dd>
                 </div>
+                <div>
+                  <dt>Gift Fit</dt>
+                  <dd>{selectedTea.gift}</dd>
+                </div>
+                <div>
+                  <dt>Caffeine</dt>
+                  <dd>{selectedTea.caffeine}</dd>
+                </div>
               </dl>
+              <div className="tea-curator-actions">
+                <a href={`${basePath}/tea-assessment/`}>Add to Assessment Profile</a>
+                <a
+                  href={buildInquiryPath({
+                    basePath,
+                    type: "Tea recommendation",
+                    message: `I would like a private recommendation based on ${selectedTea.name}.`,
+                    source: "Tea collection"
+                  })}
+                >
+                  Request Recommendation
+                </a>
+              </div>
             </aside>
 
             <div className="tea-scroll-gallery">
@@ -252,6 +290,14 @@ export function TeaCollectionExperience({ basePath }: TeaCollectionExperiencePro
                         <div>
                           <dt>Cultural Note</dt>
                           <dd>{tea.note}</dd>
+                        </div>
+                        <div>
+                          <dt>Gift Suitability</dt>
+                          <dd>{tea.gift}</dd>
+                        </div>
+                        <div>
+                          <dt>Caffeine / Intensity</dt>
+                          <dd>{tea.caffeine}</dd>
                         </div>
                       </dl>
                     </span>

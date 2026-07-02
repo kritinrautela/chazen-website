@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { navItems, site } from "@/lib/site";
+import { buildInquiryPath } from "@/lib/inquiry";
 
 export function Footer() {
   return (
@@ -31,7 +32,9 @@ export function Footer() {
           <div>
             <p>Contact</p>
             <a href={`mailto:${site.email}`}>{site.email}</a>
-            <span>Private cultural gifting by inquiry</span>
+            <Link href={buildInquiryPath({ source: "Site footer" })}>
+              Private cultural gifting inquiry
+            </Link>
           </div>
         </div>
       </div>

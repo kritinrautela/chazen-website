@@ -7,30 +7,33 @@ export const site = {
   email: process.env.NEXT_PUBLIC_CHAZEN_INQUIRY_EMAIL ?? "hello@chazentea.com.au"
 };
 
+// Primary navigation: kept to the brand guide's essential set (Section 50).
+// Everything else stays reachable via the footer sitemap, not the top nav —
+// a long top nav reads as "beginner"; a disciplined one reads as "considered."
 export const navItems = [
   { label: "Tea Test", labelZh: "茶測試", href: "/tea-test" },
   { label: "Ritual", labelZh: "茶儀式", href: "/tea-ritual" },
+  { label: "Tea", labelZh: "茶品", href: "/tea-collection" },
   { label: "Culture", labelZh: "茶文化", href: "/tea-culture" },
-  { label: "Tea Collection", labelZh: "茶品收藏", href: "/tea-collection" },
   { label: "Five Cups", labelZh: "五盞", href: "/five-cups" },
-  { label: "Tea Boxes", labelZh: "茶盒", href: "/tea-boxes" },
-  { label: "Song Room", labelZh: "點茶室", href: "/song-room" },
-  { label: "Stillness Mode", labelZh: "靜心模式", href: "/stillness-mode" },
-  { label: "AI Tea Guide", labelZh: "AI 茶導師", href: "/ai-tea-guide" },
-  { label: "B2B Gifts", labelZh: "企業茶禮", href: "/b2b" }
+  { label: "Gifting", labelZh: "文化贈禮", href: "/b2b" }
 ];
 
+// Full sitemap — every route stays reachable here even though the top nav is trimmed.
 export const footerItems = [
   { label: "Tea Test", labelZh: "茶測試", href: "/tea-test" },
   { label: "Tea Ritual", labelZh: "茶儀式", href: "/tea-ritual" },
   { label: "Tea Culture", labelZh: "茶文化", href: "/tea-culture" },
   { label: "Tea Collection", labelZh: "茶品收藏", href: "/tea-collection" },
-  { label: "Five Cups", labelZh: "五盞", href: "/five-cups" },
   { label: "Tea Boxes", labelZh: "茶盒", href: "/tea-boxes" },
+  { label: "Five Cups", labelZh: "五盞", href: "/five-cups" },
   { label: "Song Room", labelZh: "點茶室", href: "/song-room" },
   { label: "Stillness Mode", labelZh: "靜心模式", href: "/stillness-mode" },
   { label: "AI Tea Guide", labelZh: "AI 茶導師", href: "/ai-tea-guide" },
-  { label: "B2B Gifts", labelZh: "企業茶禮", href: "/b2b" }
+  { label: "Gift Box", labelZh: "禮盒", href: "/gift-box" },
+  { label: "Tea Atlas", labelZh: "茶地圖", href: "/tea-atlas" },
+  { label: "B2B Gifts", labelZh: "企業茶禮", href: "/b2b" },
+  { label: "About", labelZh: "關於我們", href: "/about" }
 ];
 
 export const giftBoxItems = [

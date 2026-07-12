@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { SectionIndexNav, type SectionIndexItem } from "@/components/SectionIndexNav";
 import { LanguageToggle } from "@/components/LanguageToggle";
+import { MoonGateMark, RippleDivider } from "@/components/ChazenMotif";
 import { videoAssets, withBasePath } from "@/lib/media";
 import { useLanguage } from "@/lib/language";
 
@@ -171,54 +172,30 @@ const timelineItems = [
   }
 ];
 
-const atlasCards = [
-  { name: "Green Tea 綠茶", feeling: { zh: "清新、明亮、輕盈", en: "Fresh, bright, light" }, suitable: { zh: "日間、專注、清爽", en: "Daytime, focus, refreshing" }, difficulty: { zh: "中等", en: "Moderate" } },
-  { name: "White Tea 白茶", feeling: { zh: "溫和、乾淨、柔和", en: "Gentle, clean, soft" }, suitable: { zh: "放鬆、晚上、慢節奏", en: "Relaxing, evenings, slow pace" }, difficulty: { zh: "容易", en: "Easy" } },
-  { name: "Oolong 烏龍", feeling: { zh: "花香、焙火、層次", en: "Floral, roasted, layered" }, suitable: { zh: "專注、平靜能量、下午", en: "Focus, calm energy, afternoons" }, difficulty: { zh: "中等", en: "Moderate" } },
-  { name: "Black Tea 紅茶", feeling: { zh: "溫暖、厚實、穩定", en: "Warm, full-bodied, grounding" }, suitable: { zh: "早上、低能量、需要精神", en: "Mornings, low energy, needing a lift" }, difficulty: { zh: "容易", en: "Easy" } },
-  { name: "Pu-erh 普洱", feeling: { zh: "沉穩、厚重、陳香", en: "Deep, rich, aged aroma" }, suitable: { zh: "飯後、深度放鬆、收藏", en: "After meals, deep relaxation, collecting" }, difficulty: { zh: "中等至高", en: "Moderate to advanced" } }
-];
-
-const teaBoxes = [
+const exploreLinks = [
   {
-    title: { en: "First Pack", zh: "初次體驗包" },
-    price: "A$25",
-    copy: { en: "A low-friction first step after the Tea Test.", zh: "完成茶測試後，最輕鬆的第一步。" },
-    items: [
-      { en: "Curated starter tea", zh: "精選入門茶" },
-      { en: "Tea-Mind result card", zh: "茶心測試結果卡" },
-      { en: "Simple brewing guide", zh: "簡易沖泡指南" }
-    ]
+    id: "tea-atlas",
+    number: "01",
+    title: { en: "Find Your Tea Direction", zh: "找到你的茶方向" },
+    copy: { en: "Five teas, mapped to how you feel.", zh: "五款茶，對應五種心境。" },
+    cta: { en: "Explore the Atlas", zh: "探索茶地圖" },
+    href: "/tea-atlas"
   },
   {
-    title: { en: "Starter Tea Box", zh: "入門茶盒" },
-    price: "A$68",
-    copy: { en: "For a complete beginner Chinese tea ritual at home.", zh: "給完全初學者的在家中國茶儀式。" },
-    items: [
-      { en: "Two entry tea directions", zh: "兩款入門茶方向" },
-      { en: "Ritual guide", zh: "儀式指南" },
-      { en: "Optional travel tea set path", zh: "可選旅行茶具方案" }
-    ]
+    id: "tea-boxes",
+    number: "02",
+    title: { en: "Begin or Continue", zh: "開始，或延續" },
+    copy: { en: "From a first pack to a lifetime collection.", zh: "從初次體驗到一世珍藏。" },
+    cta: { en: "See Tea Boxes", zh: "查看茶盒" },
+    href: "/tea-boxes"
   },
   {
-    title: { en: "Lifetime Tea Box", zh: "一世茶盒" },
-    price: "A$78",
-    copy: { en: "A story-led cultural gift with tea, ritual, and meaning.", zh: "一份有故事、有儀式、有意義的文化禮盒。" },
-    items: [
-      { en: "Premium tea", zh: "頂級茶葉" },
-      { en: "Cultural story cards", zh: "文化故事卡" },
-      { en: "Gift-ready presentation", zh: "精美禮品包裝" }
-    ]
-  },
-  {
-    title: { en: "B2B Cultural Gift Box", zh: "企業文化禮盒" },
-    price: "Custom",
-    copy: { en: "For settlement gifts, clients, teams, festivals, and cultural events.", zh: "適合交收禮物、客戶、團隊、節慶與文化活動。" },
-    items: [
-      { en: "Custom message", zh: "客製化訊息" },
-      { en: "Branding options", zh: "品牌客製選項" },
-      { en: "Bulk gifting support", zh: "大量訂購支援" }
-    ]
+    id: "b2b",
+    number: "03",
+    title: { en: "The First Evening", zh: "第一個夜晚" },
+    copy: { en: "A memorable gift for settlements, clients, and teams.", zh: "適合交收、客戶與團隊的難忘禮物。" },
+    cta: { en: "Enquire for Business", zh: "查詢企業合作" },
+    href: "/b2b"
   }
 ];
 
@@ -444,14 +421,10 @@ export default function Home() {
           <div>
             <a href={withBasePath("/tea-test")}>{t("Tea Test", "茶測試")}</a>
             <a href={withBasePath("/tea-ritual")}>{t("Ritual", "茶儀式")}</a>
+            <a href={withBasePath("/tea-collection")}>{t("Tea", "茶品")}</a>
             <a href={withBasePath("/tea-culture")}>{t("Culture", "茶文化")}</a>
-            <a href={withBasePath("/tea-collection")}>{t("Tea Collection", "茶葉收藏")}</a>
-            <a href={withBasePath("/tea-boxes")}>{t("Tea Boxes", "茶盒")}</a>
             <a href={withBasePath("/five-cups")}>{t("Five Cups", "五盞")}</a>
-            <a href={withBasePath("/song-room")}>{t("Song Room", "宋室")}</a>
-            <a href={withBasePath("/stillness-mode")}>{t("Stillness Mode", "靜心模式")}</a>
-            <a href={withBasePath("/ai-tea-guide")}>{t("AI Tea Guide", "AI 茶指南")}</a>
-            <a href={withBasePath("/b2b")}>{t("B2B Gifts", "企業茶禮")}</a>
+            <a href={withBasePath("/b2b")}>{t("Gifting", "文化贈禮")}</a>
           </div>
           <span className="chazen-nav-actions">
             <LanguageToggle />
@@ -463,6 +436,7 @@ export default function Home() {
 
         <section ref={heroRef} className="chazen-motion-hero chazen-home-hero" aria-labelledby="home-title">
           <div className="chazen-motion-hero-inner chazen-home-hero-content">
+            <MoonGateMark className="chazen-hero-motif" />
             <p className="chazen-motion-kicker">{t("Modern Chinese Tea Culture", "現代中國茶文化")}</p>
             <h1 id="home-title" lang="zh-Hant">
               茶禪 <span>Chazen</span>
@@ -691,49 +665,48 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="tea-atlas" className="chazen-motion-section">
+      <RippleDivider />
+
+      <section id="explore" className="chazen-motion-section chazen-explore-section">
         <div className="chazen-motion-container">
-          <SectionHeading title="找到你的茶方向" english="Find Your Tea Direction" />
-          <div className="chazen-atlas-grid">
-            {atlasCards.map((card) => (
-              <article key={card.name}>
-                <h3>{card.name}</h3>
-                <dl>
-                  <dt>{t("Feeling", "感覺")}</dt>
-                  <dd lang={language === "zh" ? "zh-Hant" : undefined}>{t(card.feeling.en, card.feeling.zh)}</dd>
-                  <dt>{t("Suitable for", "適合場合")}</dt>
-                  <dd lang={language === "zh" ? "zh-Hant" : undefined}>{t(card.suitable.en, card.suitable.zh)}</dd>
-                  <dt>{t("Beginner difficulty", "入門難度")}</dt>
-                  <dd lang={language === "zh" ? "zh-Hant" : undefined}>{t(card.difficulty.en, card.difficulty.zh)}</dd>
-                </dl>
+          <SectionHeading
+            title="由此延伸"
+            english="Continue the Ritual"
+            copy={{
+              en: "A few ways to go further — chosen for what fits you, not everything at once.",
+              zh: "幾種延伸的方式——選擇適合你的，而不是一次擁有全部。"
+            }}
+          />
+          <div className="chazen-explore-grid">
+            {exploreLinks.map((link) => (
+              <article key={link.id} id={link.id} className="chazen-explore-card">
+                <span className="chazen-explore-number">{link.number}</span>
+                <h3>{t(link.title.en, link.title.zh)}</h3>
+                <p lang={language === "zh" ? "zh-Hant" : undefined}>{t(link.copy.en, link.copy.zh)}</p>
+                <a href={withBasePath(link.href)}>
+                  {t(link.cta.en, link.cta.zh)} <ArrowRight size={14} aria-hidden="true" />
+                </a>
               </article>
             ))}
+            <article id="journal" className="chazen-explore-card chazen-explore-card-journal">
+              <span className="chazen-explore-number">04</span>
+              <h3>{t("Learn More About Tea", "繼續認識茶")}</h3>
+              <div className="chazen-journal-grid">
+                {journalCategories.map((category) => (
+                  <span key={category.en} lang={language === "zh" ? "zh-Hant" : undefined}>
+                    {t(category.en, category.zh)}
+                  </span>
+                ))}
+              </div>
+              <a href={withBasePath("/tea-culture")}>
+                {t("Read Tea Culture", "閱讀茶文化")} <ArrowRight size={14} aria-hidden="true" />
+              </a>
+            </article>
           </div>
-          <a href={withBasePath("/tea-test")} className="chazen-wide-cta">
-            {t("Not sure where to begin? Start the Tea Test", "不知從何開始？立即開始茶測試")}
-          </a>
         </div>
       </section>
 
-      <section id="tea-boxes" className="chazen-motion-section">
-        <div className="chazen-motion-container">
-          <SectionHeading title="開始，或延續你的茶旅程" english="Begin or Continue Your Tea Journey" />
-          <div className="chazen-box-grid">
-            {teaBoxes.map((box) => (
-              <article key={box.title.en}>
-                <span className="chazen-product-price">{box.price}</span>
-                <h3>{t(box.title.en, box.title.zh)}</h3>
-                <p>{t(box.copy.en, box.copy.zh)}</p>
-                <ul className="chazen-product-list">
-                  {box.items.map((item) => (
-                    <li key={item.en}>{t(item.en, item.zh)}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <RippleDivider />
 
       <section id="membership" className="chazen-motion-section">
         <div className="chazen-motion-container chazen-membership">
@@ -751,46 +724,6 @@ export default function Home() {
           ))}
           <a href={withBasePath("/tea-test")} className="chazen-primary-btn">
             {t("Find the right tea rhythm", "找到適合你的茶節奏")}
-          </a>
-        </div>
-      </section>
-
-      <section id="b2b" className="chazen-motion-section">
-        <div className="chazen-motion-container chazen-b2b-layout">
-          <SectionHeading
-            title="為重要關係準備的文化禮盒"
-            english="Cultural Gifts for Meaningful Relationships"
-          />
-          <div className="chazen-b2b-tags">
-            {[
-              { en: "Corporate gifts", zh: "企業禮品" },
-              { en: "Client appreciation", zh: "客戶答謝" },
-              { en: "Real estate settlement gifts", zh: "地產交收禮物" },
-              { en: "Festival gifts", zh: "節日禮盒" },
-              { en: "Business partners", zh: "商業夥伴禮物" },
-              { en: "Cultural events", zh: "文化活動禮品" }
-            ].map((tag) => (
-              <span key={tag.en}>{t(tag.en, tag.zh)}</span>
-            ))}
-          </div>
-          <a href={withBasePath("/b2b")} className="chazen-primary-btn">
-            {t("Enquire for B2B Gift Box", "查詢企業禮盒")}
-          </a>
-        </div>
-      </section>
-
-      <section id="journal" className="chazen-motion-section">
-        <div className="chazen-motion-container">
-          <SectionHeading title="繼續認識茶" english="Learn More About Tea" />
-          <div className="chazen-journal-grid">
-            {journalCategories.map((category) => (
-              <span key={category.en} lang={language === "zh" ? "zh-Hant" : undefined}>
-                {t(category.en, category.zh)}
-              </span>
-            ))}
-          </div>
-          <a href={withBasePath("/tea-atlas/")} className="chazen-wide-cta">
-            {t("Explore the Tea Atlas", "探索茶地圖")}
           </a>
         </div>
       </section>
@@ -814,7 +747,10 @@ export default function Home() {
             <a href={withBasePath("/song-room")}>{t("Song Room", "宋室")}</a>
             <a href={withBasePath("/stillness-mode")}>{t("Stillness Mode", "靜心模式")}</a>
             <a href={withBasePath("/ai-tea-guide")}>{t("AI Tea Guide", "AI 茶指南")}</a>
+            <a href={withBasePath("/gift-box")}>{t("Gift Box", "禮盒")}</a>
+            <a href={withBasePath("/tea-atlas")}>{t("Tea Atlas", "茶地圖")}</a>
             <a href={withBasePath("/b2b")}>{t("B2B Gifts", "企業茶禮")}</a>
+            <a href={withBasePath("/about")}>{t("About", "關於我們")}</a>
           </div>
           <div aria-label="Signature focus">
             <span>{t("AI tea state test", "AI 茶心測試")}</span>

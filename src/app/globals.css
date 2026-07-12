@@ -27,6 +27,7 @@ body:has(.chazen-motion-home) .museum-site-footer {
   --tea-amber: #9d8150;
   --muted-gold: #9d8150;
   --bamboo: #3f5945;
+  --celadon: #9db3a0;
   --ink: #171713;
   --stone: #9a9286;
   --jian-black: #10120f;
@@ -11242,6 +11243,7 @@ body:has(.chazen-motion-home) .museum-site-footer {
   --tea-amber: #9d8150;
   --muted-gold: #9d8150;
   --bamboo: #3f5945;
+  --celadon: #9db3a0;
   --ink: #171713;
   --stone: #9a9286;
   --jian-black: #10120f;
@@ -11435,10 +11437,32 @@ body:has(.chazen-motion-home) .museum-site-footer {
 }
 
 .chazen-motion-hero-inner {
+  position: relative;
   width: min(100% - 40px, 1040px);
   margin: 0 auto;
   padding-bottom: clamp(5.8rem, 10vw, 8.5rem);
   text-align: center;
+}
+
+/* Signature moon-gate mark: a quiet line-art ring behind the hero title,
+   echoing a garden threshold and the rim of a Jian Zhan cup. Decorative only. */
+.chazen-hero-motif {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(72vw, 600px);
+  height: min(72vw, 600px);
+  color: rgba(244, 239, 230, 0.4);
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 640px) {
+  .chazen-hero-motif {
+    width: min(92vw, 460px);
+    height: min(92vw, 460px);
+  }
 }
 
 .chazen-home-hero-content {
@@ -11808,6 +11832,34 @@ body:has(.chazen-motion-home) .museum-site-footer {
 .chazen-motion-container {
   width: min(1180px, calc(100% - 40px));
   margin: 0 auto;
+}
+
+/* Ripple divider: a stone's circles on water, used sparingly between sections
+   instead of a hard rule line — a small, considered signature rather than a
+   generic border. */
+.chazen-ripple-divider {
+  position: relative;
+  z-index: 14;
+  display: grid;
+  place-items: center;
+  gap: 0.6rem;
+  width: min(960px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: clamp(1.6rem, 3vw, 2.4rem) 0;
+  color: var(--tea-amber);
+}
+
+.chazen-ripple-divider svg {
+  width: 100%;
+  height: 32px;
+}
+
+.chazen-ripple-divider span {
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--stone);
 }
 
 .chazen-motion-heading {
@@ -12300,6 +12352,83 @@ body:has(.chazen-motion-home) .museum-site-footer {
   text-decoration: none;
 }
 
+/* Continue the Ritual: one edited band replacing five stacked full sections
+   that used to duplicate content already covered on dedicated pages. */
+.chazen-explore-section {
+  padding-top: clamp(3.2rem, 6vw, 5rem);
+  padding-bottom: clamp(3.2rem, 6vw, 5rem);
+}
+
+.chazen-explore-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.85rem;
+  align-items: stretch;
+}
+
+.chazen-explore-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  border: 1px solid rgba(91, 58, 36, 0.16);
+  border-radius: 8px;
+  background: rgba(251, 247, 239, 0.72);
+  padding: 1.4rem 1.2rem;
+}
+
+.chazen-explore-number {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--tea-amber);
+  letter-spacing: 0.08em;
+}
+
+.chazen-explore-card h3 {
+  margin: 0;
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.chazen-explore-card p {
+  margin: 0;
+  flex-grow: 1;
+  color: rgba(42, 39, 34, 0.68);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.chazen-explore-card > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  border-top: 1px solid rgba(91, 58, 36, 0.14);
+  padding-top: 0.6rem;
+  color: var(--deep-wood);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.chazen-explore-card > a:hover,
+.chazen-explore-card > a:focus-visible {
+  color: var(--tea-amber);
+}
+
+.chazen-explore-card-journal .chazen-journal-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin: 0.2rem 0;
+}
+
+.chazen-explore-card-journal .chazen-journal-grid span {
+  padding: 0.5rem 0.6rem;
+  font-size: 0.78rem;
+}
+
 .chazen-motion-footer {
   position: relative;
   z-index: 14;
@@ -12434,7 +12563,8 @@ body:has(.chazen-motion-home) .museum-site-footer {
   .chazen-step-grid,
   .chazen-box-grid,
   .chazen-b2b-tags,
-  .chazen-journal-grid {
+  .chazen-journal-grid,
+  .chazen-explore-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -12482,7 +12612,8 @@ body:has(.chazen-motion-home) .museum-site-footer {
   .chazen-atlas-grid,
   .chazen-box-grid,
   .chazen-b2b-tags,
-  .chazen-journal-grid {
+  .chazen-journal-grid,
+  .chazen-explore-grid {
     grid-template-columns: 1fr;
   }
 

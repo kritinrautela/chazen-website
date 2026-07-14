@@ -238,7 +238,7 @@ export default function B2BPage() {
           <form
             id="b2b-enquiry"
             className="chazen-form-placeholder"
-            action="mailto:hello@chazentea.com.au?subject=Chazen%20B2B%20Gift%20Enquiry"
+            action="mailto:chazen24tz@gmail.com?subject=Chazen%20B2B%20Gift%20Enquiry"
             method="post"
             encType="text/plain"
           >
@@ -270,7 +270,7 @@ export default function B2BPage() {
           <article className="chazen-subpage-note">
             <h3>{t("What happens next", "提交後流程")}</h3>
             <p>{t("Your email app will open with the enquiry details. We will confirm quantity, branding, lead time, and final pricing before production.", "系統會開啟你的電郵程式並帶入查詢資料。我們會在製作前確認數量、聯名方式、交期及最終價格。")}</p>
-            <p><a href="mailto:hello@chazentea.com.au">hello@chazentea.com.au</a></p>
+            <p><a href="mailto:chazen24tz@gmail.com">chazen24tz@gmail.com</a></p>
           </article>
         </div>
       </ChazenContentSection>

@@ -150,6 +150,54 @@
   color: rgba(157, 129, 80, 0.55);
 }
 
+.tea-box-buy-button,
+.tea-box-enquire-link {
+  width: 100%;
+  min-height: 2.9rem;
+  margin-top: 1.4rem;
+  border: 1px solid var(--cz-leaf);
+  border-radius: 2px;
+  padding: 0.8rem 1.1rem;
+  background: var(--cz-leaf);
+  color: #fbfaf6;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 180ms ease, color 180ms ease, opacity 180ms ease;
+}
+
+.tea-box-buy-button:hover,
+.tea-box-buy-button:focus-visible,
+.tea-box-enquire-link:hover,
+.tea-box-enquire-link:focus-visible {
+  background: transparent;
+  color: var(--cz-leaf);
+}
+
+.tea-box-buy-button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.tea-box-enquire-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tea-box-checkout-error {
+  margin: 0.65rem 0 0;
+  color: #9f3f2f;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
 /* Comparison table editorial treatment */
 .tea-comparison-table {
   overflow-x: auto;
@@ -244,5 +292,10 @@
   .tea-box-card:hover,
   .tea-box-card:focus-within {
     transform: none;
+  }
+
+  .tea-box-buy-button,
+  .tea-box-enquire-link {
+    transition: none;
   }
 }

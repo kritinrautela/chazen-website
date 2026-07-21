@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   ChazenContentSection,
   ChazenCtaBand,
@@ -9,6 +9,10 @@ import {
 } from "@/components/ChazenSubpage";
 import { useLanguage } from "@/lib/language";
 import styles from "./tea-boxes.module.css";
+
+const checkoutApiUrl =
+  process.env.NEXT_PUBLIC_CHECKOUT_API_URL ??
+  "https://chazen-website.vercel.app/api/checkout/";
 
 const journeys = [
   {
@@ -36,6 +40,7 @@ const journeys = [
 
 const boxCards = [
   {
+    productId: "first-pack",
     title: { en: "First Pack", zh: "初次體驗包" },
     price: "A$25",
     asset: "first-pack-mockup.png",
@@ -48,6 +53,7 @@ const boxCards = [
     ]
   },
   {
+    productId: "starter-tea-box",
     title: { en: "Starter Tea Box", zh: "入門茶盒" },
     price: "A$68",
     asset: "starter-tea-box-mockup.png",
@@ -60,6 +66,7 @@ const boxCards = [
     ]
   },
   {
+    productId: "lifetime-tea-box",
     title: { en: "Lifetime Tea Box", zh: "一世茶盒" },
     price: "A$78",
     asset: "lifetime-tea-box-mockup.png",
@@ -72,6 +79,7 @@ const boxCards = [
     ]
   },
   {
+    productId: null,
     title: { en: "B2B Cultural Gift Box", zh: "企業文化禮盒" },
     price: "Custom",
     asset: "b2b-gift-box-mockup.png",
@@ -132,10 +140,36 @@ const comparisonHeadings = [
 export default function TeaBoxesPage() {
   const { t, language } = useLanguage();
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const [loadingProductId, setLoadingProductId] = useState<string | null>(null);
+  const [checkoutErrorProductId, setCheckoutErrorProductId] = useState<string | null>(null);
 
   useEffect(() => {
     document.title = language === "zh" ? "茶盒 | Chazen" : "Tea Boxes | Chazen";
   }, [language]);
+
+  async function handleBuyNow(productId: string) {
+    setLoadingProductId(productId);
+    setCheckoutErrorProductId(null);
+
+    try {
+      const response = await fetch(checkoutApiUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ productId })
+      });
+      const result = (await response.json()) as { url?: string };
+
+      if (!response.ok || !result.url) {
+        throw new Error("Checkout could not be started");
+      }
+
+      window.location.assign(result.url);
+    } catch {
+      setCheckoutErrorProductId(productId);
+    } finally {
+      setLoadingProductId(null);
+    }
+  }
 
   return (
     <main className="chazen-subpage">
@@ -195,6 +229,33 @@ export default function TeaBoxesPage() {
                       <li key={item.en}>{t(item.en, item.zh)}</li>
                     ))}
                   </ul>
+                  {box.productId ? (
+                    <>
+                      <button
+                        type="button"
+                        className={styles["tea-box-buy-button"]}
+                        onClick={() => handleBuyNow(box.productId)}
+                        disabled={loadingProductId !== null}
+                        aria-busy={loadingProductId === box.productId}
+                      >
+                        {loadingProductId === box.productId
+                          ? t("Opening secure checkout…", "正在開啟安全結帳…")
+                          : t("Buy Now", "立即購買")}
+                      </button>
+                      {checkoutErrorProductId === box.productId ? (
+                        <p className={styles["tea-box-checkout-error"]} role="alert">
+                          {t(
+                            "Checkout is temporarily unavailable. Please try again.",
+                            "結帳服務暫時無法使用，請稍後再試。"
+                          )}
+                        </p>
+                      ) : null}
+                    </>
+                  ) : (
+                    <a className={styles["tea-box-enquire-link"]} href={`${basePath}/b2b/`}>
+                      {t("Enquire", "查詢")}
+                    </a>
+                  )}
                 </div>
               </div>
             </article>

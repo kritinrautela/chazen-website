@@ -32,13 +32,13 @@ export const navItems: NavItem[] = [
     ]
   },
   {
-    label: "Tea",
-    labelZh: "茶品",
-    href: "/tea-collection",
+    label: "Collection",
+    labelZh: "收藏",
+    href: "/five-cups",
     children: [
+      { label: "Five Cups", labelZh: "五盞收藏", href: "/five-cups" },
       { label: "Tea Collection", labelZh: "茶品收藏", href: "/tea-collection" },
-      { label: "Tea Boxes", labelZh: "茶盒", href: "/tea-boxes" },
-      { label: "Tea Atlas", labelZh: "茶地圖", href: "/tea-atlas" }
+      { label: "Tea Sets", labelZh: "茶具組", href: "/tea-boxes" }
     ]
   },
   {
@@ -47,16 +47,8 @@ export const navItems: NavItem[] = [
     href: "/tea-culture",
     children: [
       { label: "Tea Culture", labelZh: "茶文化", href: "/tea-culture" },
+      { label: "Tea Atlas", labelZh: "茶地圖", href: "/tea-atlas" },
       { label: "Our Story", labelZh: "品牌故事", href: "/about" }
-    ]
-  },
-  {
-    label: "Five Cups",
-    labelZh: "五盞",
-    href: "/five-cups",
-    children: [
-      { label: "Cup Collection", labelZh: "五盞收藏", href: "/five-cups" },
-      { label: "Tea Set", labelZh: "茶具組", href: "/tea-boxes" }
     ]
   },
   {
